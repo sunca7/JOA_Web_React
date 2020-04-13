@@ -11,25 +11,38 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    const { categories } = this.state;
+
     db.collection("categories")
       .get()
       .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.state.categories.push(doc.data());
-        });
+        querySnapshot.forEach((doc) => (
+          categories.push({
+            id: doc.id,
+                  name: doc.data().name,
+                  order: doc.data().order,
+                  picture: doc.data().picture,
+                  type : doc.data().type
+          })
+      ))
+      this.setState({ categories })
       });
-    console.log(this.state.categories);
+    console.log(categories);
   }
 
   render() {
-    return (
+    let renderStruct = null;
+
+    renderStruct = (
       <Router>
         <div>
           <Navbar />
           <Categories categories={this.state.categories} />
         </div>
       </Router>
-    );
+    )
+
+    return renderStruct;
   }
 }
 

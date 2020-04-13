@@ -25,17 +25,26 @@ class Categories extends Component {
   };
 
   render() {
-    return (
+
+    let renderStruct = null;
+
+    renderStruct = (
       <div
         className="categories-container"
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
       >
-        <Category
-          categories={this.props.categories}
+        {console.log("map categories ", this.props.categories)}
+        {this.props.categories.map(category => (
+          <Category
+          key = {category.id}
+          category={category}
           selectCategory={this.selectCategory}
         />
+        ))}
       </div>
     );
+
+    return renderStruct;
   }
 }
 
