@@ -4,6 +4,7 @@ import Category from "./Category";
 
 class Categories extends Component {
   state = {
+    categories: [],
     places: [],
     selected: [],
     categoryId: ""
@@ -28,10 +29,15 @@ class Categories extends Component {
 
     let renderStruct = null;
 
+    const categoryStyle = {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr"
+    }
+
     renderStruct = (
       <div
         className="categories-container"
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
+        style={categoryStyle}
       >
         {console.log("map categories ", this.props.categories)}
         {this.props.categories.map(category => (
@@ -45,7 +51,8 @@ class Categories extends Component {
     );
 
     return renderStruct;
-  }
+    
+  };
 }
 
 export default Categories;

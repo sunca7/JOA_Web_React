@@ -37,7 +37,9 @@ class Home extends Component {
       <Router>
         <div>
           <Navbar />
-          <Categories categories={this.state.categories} />
+          <div className="container">
+            <Categories categories={this.state.categories} />
+          </div>
         </div>
       </Router>
     )
