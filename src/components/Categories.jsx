@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import db from "../db/index";
 import Category from "./Category";
+import PropTypes from "prop-types";
 
 class Categories extends Component {
   state = {
@@ -53,6 +54,11 @@ class Categories extends Component {
     return renderStruct;
     
   };
+  
+}
+
+Categories.propTypes = {
+  categories : PropTypes.array.isRequired
 }
 
 export default Categories;

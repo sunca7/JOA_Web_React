@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./NavbarStyle.scss";
 
@@ -54,8 +54,9 @@ class Navbar extends Component {
                 ×
               </span>
             </li>
-            <li>
-              <Link to="/">Home</Link>
+            {/* <a> refreshes the Home page after coming back */}
+            <li> 
+              <Link to="/">Home</Link>  
             </li>
             <li>
               <Link to="/about">About</Link>
