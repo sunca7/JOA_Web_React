@@ -6,10 +6,13 @@ import Categories from './Categories';
 import db from '../db/index';
 import About from './pages/About'
 import Contact from './pages/Contact';
+import Category from './Category';
 
 class Home extends Component {
   state = {
-    categories: []
+    categories: [],
+    places : [],
+    selectedCategory : []
   };
 
   componentDidMount() {
@@ -29,8 +32,22 @@ class Home extends Component {
       ))
       this.setState({ categories })
       });
-    console.log(categories);
+    
+      db.collection("places")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.state.places.push(doc.data());
+        });
+      });
   }
+
+  selectCategory = async id => {
+    console.log("select category in home ", id);
+    let res  = await this.state.places.filter(i => i.category_id === id);
+    this.setState({ selectedCategory : res});
+    console.log("selected category map places ", this.state.selectedCategory);
+  };
 
   render() {
     let renderStruct = null;
@@ -43,11 +60,14 @@ class Home extends Component {
             <Switch>
                 <Route exact path='/' render={(props) => (
                   <Fragment>
-                    <Categories categories={this.state.categories} />
+                    <Categories categories={this.state.categories} selectCategory={this.selectCategory} />
                   </Fragment>
                 )}/>
                 <Route exact path='/about' component={About}/>
                 <Route exact path='/contact' component={Contact}/>
+                <Route exact path='/:categoryName' render={props => ( 
+                  <Category {...props} categoryItems={this.state.selectedCategory}/>
+                )}/>
             </Switch>
           </div>
         </div>
