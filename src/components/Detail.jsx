@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 function Detail(props) {
     return (
         <div>
-            <h1>Detail</h1>
+            <h1>Places Detail</h1>
         </div>
     )
 }
