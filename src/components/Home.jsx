@@ -7,6 +7,7 @@ import db from '../db/index';
 import About from './pages/About'
 import Contact from './pages/Contact';
 import Category from './Category';
+import Detail from './Detail';
 
 class Home extends Component {
   state = {
@@ -67,6 +68,9 @@ class Home extends Component {
                 <Route exact path='/contact' component={Contact}/>
                 <Route exact path='/:categoryName' render={props => ( 
                   <Category {...props} categoryItems={this.state.selectedCategory}/>
+                )}/>
+                <Route exact path='/details/:placeName' render={props => ( 
+                  <Detail {...props} />
                 )}/>
             </Switch>
           </div>

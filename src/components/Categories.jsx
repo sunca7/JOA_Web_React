@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import db from "../db/index";
 import CategoryItem from "./CategoryItem";
 import PropTypes from "prop-types";
 
 class Categories extends Component {
-  state = {
-  };
+  // state = {
+  // };
 
-  componentDidMount() {
-  }
+  // componentDidMount() {
+  // }
 
   render() {
+    const { categories, selectCategory } = this.props;
 
     let renderStruct = null;
 
-    const categoryStyle = {
+    const categoriesStyle = {
       display: "grid",
       gridTemplateColumns: "1fr 1fr"
     }
@@ -22,14 +22,14 @@ class Categories extends Component {
     renderStruct = (
       <div
         className="categories-container"
-        style={categoryStyle}
+        style={categoriesStyle}
       >
         {/* {console.log("map categories ", this.props.categories)} */}
-        {this.props.categories.map(category => (
+        {categories.map(category => (
           <CategoryItem
-          key = {category.id}
-          category={category}
-          selectCategory={this.props.selectCategory}
+            key = {category.id}
+            category={category}
+            selectCategory={selectCategory}
         />
         ))}
       </div>
