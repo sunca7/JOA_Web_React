@@ -13,7 +13,10 @@ class Home extends Component {
   state = {
     categories: [],
     places : [],
-    selectedCategory : []
+    selectedCategory : [],
+    selectedId : '',
+    selectedPlace : null,
+    loading : false
   };
 
   componentDidMount() {
@@ -38,19 +41,35 @@ class Home extends Component {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.state.places.push(doc.data());
+          this.state.places.push({
+            category_id: doc.data().category_id,
+            id : doc.data().id,
+            picture : doc.data().picture,
+            name: doc.data().name
+          });
         });
       });
   }
 
-  selectCategory = async id => {
+  getCategory = async id => {
     console.log("select category in home ", id);
     let res  = await this.state.places.filter(i => i.category_id === id);
     this.setState({ selectedCategory : res});
     console.log("selected category map places ", this.state.selectedCategory);
   };
 
+  getPlace = async id => {
+    this.setState({loading : true});
+    let placeInfo = {};
+    placeInfo = await this.state.places.filter(place => place.id === id);
+
+    this.setState({ selectedPlace : placeInfo, loading: false});
+    console.log("selected place ", this.state.selectedPlace);
+  }
+
   render() {
+    const { selectedPlace, selectedCategory, loading, categories } = this.state;
+
     let renderStruct = null;
 
     renderStruct = (
@@ -61,16 +80,16 @@ class Home extends Component {
             <Switch>
                 <Route exact path='/' render={(props) => (
                   <Fragment>
-                    <Categories categories={this.state.categories} selectCategory={this.selectCategory} />
+                    <Categories categories={categories} getCategory={this.getCategory} />
                   </Fragment>
                 )}/>
                 <Route exact path='/about' component={About}/>
                 <Route exact path='/contact' component={Contact}/>
                 <Route exact path='/:categoryName' render={props => ( 
-                  <Category {...props} categoryItems={this.state.selectedCategory}/>
+                  <Category { ...props } categoryItems={selectedCategory} />
                 )}/>
-                <Route exact path='/details/:placeName' render={props => ( 
-                  <Detail {...props} />
+                <Route exact path='/details/:id' render={props => ( 
+                  <Detail { ...props } place={selectedPlace} getPlace={this.getPlace} loading={loading}/>
                 )}/>
             </Switch>
           </div>

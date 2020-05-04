@@ -10,7 +10,7 @@ class Categories extends Component {
   // }
 
   render() {
-    const { categories, selectCategory } = this.props;
+    const { categories, getCategory } = this.props;
 
     let renderStruct = null;
 
@@ -29,7 +29,7 @@ class Categories extends Component {
           <CategoryItem
             key = {category.id}
             category={category}
-            selectCategory={selectCategory}
+            getCategory={getCategory}
         />
         ))}
       </div>

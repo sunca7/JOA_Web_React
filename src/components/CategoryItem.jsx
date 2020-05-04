@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class CategoryItem extends Component {
   
   onClick = (id) => {
-    this.props.selectCategory(id);
+    this.props.getCategory(id);
   };
 
   render () {

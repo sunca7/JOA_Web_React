@@ -19,7 +19,6 @@ class Category extends Component {
                 <PlaceItem
                     key = {item.id}
                     place={item}
-                    selectPlace={this.props.selectPlace}
                 />
                 ))}
             </div>

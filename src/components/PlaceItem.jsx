@@ -3,19 +3,14 @@ import { Link } from "react-router-dom";
 
 class PlaceItem extends Component {
 
-    onClick = (id) => {
-        // this.props.selectPlace(id);
-      };
-
     render() {
         const { picture, name, id } = this.props.place;
 
         return (
             <div>
-                <Link to={`/details/${name.en}`} className="categoryItem"
-                style={{ position: "relative", textAlign: "center", color: "white" }}
-                onClick={()=> this.onClick(id)}
-            >
+                <Link to={`/details/${id}`} className="categoryItem"
+                    style={{ position: "relative", textAlign: "center", color: "white" }}
+                >
             <img
                 src={ picture } 
                 alt="place-img"
