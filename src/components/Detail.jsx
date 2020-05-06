@@ -11,7 +11,7 @@ const Detail = ({ place, loading, match, getPlace }) => {
    
     if (!place)  return <Spinner />;
     else {
-        console.log("hey 2", place);
+        console.log("place info ", place);
         return (
             <Fragment>
                 <h2>{place.id}</h2>
