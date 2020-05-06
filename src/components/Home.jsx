@@ -41,12 +41,7 @@ class Home extends Component {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.state.places.push({
-            category_id: doc.data().category_id,
-            id : doc.data().id,
-            picture : doc.data().picture,
-            name: doc.data().name
-          });
+          this.state.places.push(doc.data());
         });
       });
   }
@@ -63,7 +58,7 @@ class Home extends Component {
     let placeInfo = {};
     placeInfo = await this.state.places.filter(place => place.id === id);
 
-    this.setState({ selectedPlace : placeInfo, loading: false});
+    this.setState({ selectedPlace : placeInfo[0], loading: false});
     console.log("selected place ", this.state.selectedPlace);
   }
 
