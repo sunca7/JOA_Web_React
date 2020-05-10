@@ -3,11 +3,6 @@ import CategoryItem from "./CategoryItem";
 import PropTypes from "prop-types";
 
 class Categories extends Component {
-  // state = {
-  // };
-
-  // componentDidMount() {
-  // }
 
   render() {
     const { categories, getCategory } = this.props;
@@ -24,7 +19,6 @@ class Categories extends Component {
         className="categories-container"
         style={categoriesStyle}
       >
-        {/* {console.log("map categories ", this.props.categories)} */}
         {categories.map(category => (
           <CategoryItem
             key = {category.id}

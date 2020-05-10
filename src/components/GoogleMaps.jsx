@@ -5,11 +5,15 @@ class GoogleMaps extends Component {
   
     displayMarkers = () => {
       return this.props.mapItems.map((item, index) => {
-        return <Marker key={index} id={index} position={{
-         lat: item.latitude,
-         lng: item.longitude
-       }}
-       onClick={() => console.log("You clicked me!")} />
+        return <Marker 
+                  key={index} 
+                  id={index} 
+                  position={{
+                  lat: item.latitude,
+                  lng: item.longitude
+                }}
+                  onClick={() => console.log("You clicked me!")} 
+                />
       })
     }
   

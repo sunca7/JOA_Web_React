@@ -69,7 +69,7 @@ class Home extends Component {
 
     renderStruct = (
       <Router>
-        <div>
+        <div style={{display : 'block'}}>
           <Navbar />
           <div className="container">
             <Switch>

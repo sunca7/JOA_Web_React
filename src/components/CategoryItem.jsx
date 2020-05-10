@@ -25,7 +25,7 @@ class CategoryItem extends Component {
                 style={{ opacity: "0.3", width: "100%", height: "100%" }}
               />
               <h1 className="name-center" style=
-                {{ position: "absolute", top: "50%", left: "50%"}}>
+                {{ position: "absolute", top: "-800%", left: "30%"}}>
                 {name.en}
               </h1>
             </Link>

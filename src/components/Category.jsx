@@ -8,15 +8,26 @@ class Category extends Component {
     render () {
 
         const categoryStyle = {
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            width: '50%'
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            width: '80%',
+            marginLeft: 'auto',
+            marginRight: 'auto'
           }
+
+        const mapStyle = {
+            height: '450px',
+            maxWidth: '992px',
+            width: '100%',
+            marginLeft : 'auto',
+            marginRight : 'auto',
+            marginTop : '50px'
+        }
 
         return (
             <div
                 className="category-container">
-                <div>
+                <div style={mapStyle}> 
                     <GoogleMaps mapItems={this.props.categoryItems}/>
                 </div>
                 <div
