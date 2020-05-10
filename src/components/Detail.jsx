@@ -35,13 +35,13 @@ const Detail = ({ place, loading, match, getPlace }) => {
             <div className='detail-container' style={detailStyle}>
                 <Fragment>
                     <img src={place.picture} alt="place-main-img" style={imageStyle}/>
-                    <div class="details-info" style={textStyle}>
+                    <Fragment class="details-info" style={textStyle}>
                         <p href={place.schedule.en || place.schedule.fr}></p>
                         <p> {place.phone} </p>
                         <p> {place.address}</p>
                         <p> {place.website}</p>
                         <p> Share </p>
-                    </div>
+                    </Fragment>
                 </Fragment>
             </div>
         );
@@ -50,7 +50,7 @@ const Detail = ({ place, loading, match, getPlace }) => {
 
 Detail.propTypes = {
     loading : PropTypes.bool,
-    place: PropTypes.object.isRequired,
+    place: PropTypes.object.isRequired, 
     getPlace: PropTypes.func.isRequired
 }
 

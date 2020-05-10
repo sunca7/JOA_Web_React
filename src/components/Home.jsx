@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './layout/Navbar';
@@ -8,20 +8,20 @@ import About from './pages/About'
 import Contact from './pages/Contact';
 import Category from './Category';
 import Detail from './Detail';
+import EventCategory from './EventCategory';
+import JoaState from '../context/joa/JoaState';
 
-class Home extends Component {
-  state = {
-    categories: [],
-    places : [],
-    selectedCategory : [],
-    selectedId : '',
-    selectedPlace : null,
-    loading : false
-  };
+const Home = () => {
+  const [categories, setCategories] = useState([]);
+  const [places, setPlaces] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedId, setSelectedId] = useState('');
+  const [selectedPlace, setSelectedPlace] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [events, setEvents] = useState([]);
 
-  componentDidMount() {
-    const { categories } = this.state;
-
+  useEffect(() => {
+  
     db.collection("categories")
       .get()
       .then(querySnapshot => {
@@ -33,67 +33,74 @@ class Home extends Component {
             picture: doc.data().picture,
             type : doc.data().type
           })
-      ))
-      this.setState({ categories })
+      ));
+      setCategories(categories);
       });
     
       db.collection("places")
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.state.places.push(doc.data());
+          places.push(doc.data());
         });
+        setPlaces(places);
       });
-  }
 
-  getCategory = async id => {
+      db.collection("events")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          events.push(doc.data());
+        });
+        console.log("events ", events);
+        setEvents(events);
+      });
+    }, []);
+
+  const getCategory = async id => {
     console.log("select category in home ", id);
-    let res  = await this.state.places.filter(i => i.category_id === id);
-    this.setState({ selectedCategory : res});
-    console.log("selected category map places ", this.state.selectedCategory);
+    let res  = await places.filter(i => i.category_id === id);
+    setSelectedCategory(res);
+    console.log("selected category map places ", selectedCategory);
   };
 
-  getPlace = async id => {
-    this.setState({loading : true});
+  const getPlace = async id => {
+    setLoading(true);
     let placeInfo = {};
-    placeInfo = await this.state.places.filter(place => place.id === id);
+    placeInfo = await places.filter(place => place.id === id);
 
-    this.setState({ selectedPlace : placeInfo[0], loading: false});
-    console.log("selected place ", this.state.selectedPlace);
-  }
-
-  render() {
-    const { selectedPlace, selectedCategory, loading, categories } = this.state;
-
-    let renderStruct = null;
-
-    renderStruct = (
-      <Router>
-        <div style={{display : 'block'}}>
-          <Navbar />
-          <div className="container">
-            <Switch>
-                <Route exact path='/' render={(props) => (
-                  <Fragment>
-                    <Categories categories={categories} getCategory={this.getCategory} />
-                  </Fragment>
-                )}/>
-                <Route exact path='/about' component={About}/>
-                <Route exact path='/contact' component={Contact}/>
-                <Route exact path='/:categoryName' render={props => ( 
-                  <Category { ...props } categoryItems={selectedCategory} />
-                )}/>
-                <Route exact path='/details/:id' render={props => ( 
-                  <Detail { ...props } place={selectedPlace} getPlace={this.getPlace} loading={loading}/>
-                )}/>
-            </Switch>
-          </div>
+    setSelectedPlace(placeInfo[0]);
+    setLoading(false);
+    console.log("selected place ", selectedPlace);
+  };
+  
+  return (
+    <Router>
+      <div style={{display : 'block'}}>
+        <Navbar />
+        <div className="container" style={{padding : '50px'}}>
+          <Switch>
+              <Route exact path='/' render={(props) => (
+                <Fragment>
+                  <Categories categories={categories} getCategory={getCategory} />
+                </Fragment>
+              )}/>
+              <Route exact path='/about' component={About}/>
+              <Route exact path='/contact' component={Contact}/>
+              {/* <Route exact path='/Events' render={props => ( 
+                <EventCategory { ...props } categoryItems={events} />
+              )}/> */}
+              <Route exact path='/:categoryName' render={props => ( 
+                <Category { ...props } categoryItems={selectedCategory} />
+              )}/>
+              <Route exact path='/details/:id' render={props => ( 
+                <Detail { ...props } place={selectedPlace} getPlace={getPlace} loading={loading}/>
+              )}/>
+          </Switch>
         </div>
-      </Router>
-    )
-
-    return renderStruct;
-  }
+      </div>
+    </Router>
+  )
 }
 
 export default Home;

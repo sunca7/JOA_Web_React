@@ -3,8 +3,8 @@ import React from 'react'
 const About = () => {
     return (
         <div>
-            <h1>About This App</h1>
-            <p>Appt to discover Korean cultural places</p>
+            <h1>About JOA</h1>
+            <p>App to discover Korean cultural places</p>
         </div>
     )
 }
