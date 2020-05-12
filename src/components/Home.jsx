@@ -75,7 +75,8 @@ const Home = () => {
   };
   
   return (
-    <Router>
+    // <JoaState>
+    // <Router>
       <div style={{display : 'block'}}>
         <Navbar />
         <div className="container" style={{padding : '50px'}}>
@@ -99,7 +100,8 @@ const Home = () => {
           </Switch>
         </div>
       </div>
-    </Router>
+    // </Router>
+    // </JoaState>
   )
 }
 

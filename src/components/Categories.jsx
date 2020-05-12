@@ -1,40 +1,38 @@
-import React, { Component } from "react";
-import CategoryItem from "./CategoryItem";
-import PropTypes from "prop-types";
+import React, { useContext, useEffect } from 'react';
+import CategoryItem from './CategoryItem';
+import PropTypes from 'prop-types';
+import JoaContext from '../context/joa/joaContext';
 
-class Categories extends Component {
+const Categories = ({ categories, getCategory }) => {
+  const joaContext = useContext(JoaContext);
+  const { getCategories } = joaContext;
 
-  render() {
-    const { categories, getCategory } = this.props;
-
-    let renderStruct = null;
-
-    const categoriesStyle = {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr"
+  useEffect(() => {
+    return () => {
+      getCategories();
     }
+  }, []);
 
-    renderStruct = (
-      <div
-        className="categories-container"
-        style={categoriesStyle}
-      >
-        {categories.map(category => (
-          <CategoryItem
-            key = {category.id}
-            category={category}
-            getCategory={getCategory}
-        />
-        ))}
-      </div>
-    );
+  const categoriesStyle = {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr"
+  }
 
-    return renderStruct;
-    
-  };
+  return ( 
+    <div
+      className="categories-container"
+      style={categoriesStyle}
+    >
+      {categories.map(category => (
+        <CategoryItem
+          key = {category.id}
+          category={category}
+          getCategory={getCategory}
+      />
+      ))}
+    </div>
+  )};
   
-}
-
 Categories.propTypes = {
   categories : PropTypes.array.isRequired
 }

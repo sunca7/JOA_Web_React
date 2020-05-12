@@ -6,15 +6,15 @@ import JoaState from './context/joa/JoaState';
 
 function App() {
   return (
-    // <JoaState>
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <Home />
-        </header>
-      </div>
-    </Router>
-    // </JoaState>
+    <JoaState>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <Home />
+          </header>
+        </div>
+        </Router>
+    </JoaState>
   );
 }
 
