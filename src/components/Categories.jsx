@@ -15,7 +15,7 @@ const Categories = ({ categories, getCategory }) => {
 
   const categoriesStyle = {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr"
+    gridTemplateColumns: "1fr 1fr",
   }
 
   return ( 

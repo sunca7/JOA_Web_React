@@ -23,7 +23,7 @@ const Detail = ({ place, loading, match, getPlace }) => {
     }
 
     const textStyle = {
-        color: 'white',
+        color: 'black',
         margin: '2vw',
         fontSize: '3vw'
     }
@@ -36,7 +36,7 @@ const Detail = ({ place, loading, match, getPlace }) => {
                 <Fragment>
                     <img src={place.picture} alt="place-main-img" style={imageStyle}/>
                     <Fragment class="details-info" style={textStyle}>
-                        <p href={place.schedule.en || place.schedule.fr}></p>
+                        {/* <p href={place.schedule.en || place.schedule.fr || ''}></p> */}
                         <p> {place.phone} </p>
                         <p> {place.address}</p>
                         <p> {place.website}</p>

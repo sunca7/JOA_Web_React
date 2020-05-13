@@ -74,7 +74,7 @@ class Navbar extends Component {
 const navStyle = {
   width: "100%",
   height: "60px",
-  backgroundColor: "#1b998b",
+  backgroundColor: '#cec857',
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",

@@ -79,7 +79,7 @@ const Home = () => {
     // <Router>
       <div style={{display : 'block'}}>
         <Navbar />
-        <div className="container" style={{padding : '50px'}}>
+        <div className="container" style={{padding : '50px', width : '70vw', height: '70wh', marginLeft: 'auto', marginRight : 'auto' }}>
           <Switch>
               <Route exact path='/' render={(props) => (
                 <Fragment>
