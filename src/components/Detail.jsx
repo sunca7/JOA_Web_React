@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react'
-import PropTypes from 'prop-types';
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 
@@ -51,12 +50,6 @@ const Detail = ({ match }) => {
             </div>
         );
     }
-}
-
-Detail.propTypes = {
-    loading : PropTypes.bool,
-    place: PropTypes.object.isRequired, 
-    getPlace: PropTypes.func.isRequired
 }
 
 export default Detail

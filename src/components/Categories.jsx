@@ -18,11 +18,7 @@ const Categories = () => {
     // eslint-diable-next-line
 }, [])
 
-  // console.log("context categories ", categories);
-  // console.log("categories loading ", loading);
-
   if (!categories) {
-    // console.log("nothing 2");
     return <Spinner />;
   } else {
     return ( 
