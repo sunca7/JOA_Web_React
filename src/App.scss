@@ -28,7 +28,7 @@ body {
   background: $primary-color;
   font-weight: map-get($map: $font-weights, $key: bold);
   font-family: "Roboto Slab", serif;
-  color: white;
+  color: black;
   width: 100%;
   min-height: 100vh;
 }

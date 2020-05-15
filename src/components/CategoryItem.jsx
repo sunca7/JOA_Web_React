@@ -1,43 +1,39 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
+import JoaContext from '../context/joa/joaContext';
 
-class CategoryItem extends Component {
+const CategoryItem = (props) => {
   
-  constructor(props) {
-    super(props);
-    this.state = {hovered: false};
-  }
+  const joaContext = useContext(JoaContext);
 
-  onClick = (id) => {
-    this.props.getCategory(id);
+  const { getCategory } = joaContext;
+
+  const onClick = (id) => {
+    getCategory(id);
   };
 
-  render () {
-    const { picture, name, id } = this.props.category;
+  const { picture, name, id } = props.category;
 
-    return (
-      <div>
-        <Link to={`/${name.en}`} className="categoryItem"
-            onMouseOver={() => this.setState({hovered: true})}
-            onMouseOut={() => this.setState({hovered: false})}
-            onClick={()=> this.onClick(id)}
-            style={{ position: "relative", textAlign: "center", color: "white" }}
-            >
-            <img
-                src={ picture } 
-                alt="category-img"
-                className="category-img"
-                style={{ opacity: "1", width: "100%", height: "100%", transform: `${this.state.hovered ? 'opacity(0.3,1)' : null}` }}
-              />
-              <h1 className="name-center" style=
-                {{ position: "absolute", top: "-800%", left: "30%"}}>
-                {name.en}
-              </h1>
-            </Link>
-          </div>
-    );  
-  }
+  return (
+    <div>
+      <Link to={`/${name.en}`} className="categoryItem"
+          onClick={()=> onClick(id)}
+          style={{ position: "relative", textAlign: "center", color: "white" }}
+          >
+          <img
+              src={ picture } 
+              alt="category-img"
+              className="category-img"
+              style={{ opacity: "1", width: "100%", height: "100%" }}
+            />
+            <h1 className="name-center" style=
+              {{ position: "absolute", top: "-800%", left: "30%"}}>
+              {name.en}
+            </h1>
+          </Link>
+        </div>
+  );  
 }
 
 CategoryItem.propTypes = {

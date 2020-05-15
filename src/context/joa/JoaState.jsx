@@ -1,13 +1,14 @@
 import React , { useReducer } from 'react';
 import db from '../../db/index';
-import joaContext from './joaContext';
-import joaReducer from  './joaReducer';
+import JoaContext from './joaContext';
+import JoaReducer from  './joaReducer';
 import {
     GET_CATEGORIES,
+    GET_PLACES,
+    GET_PLACE,
     GET_CATEGORY,
     GET_EVENTS,
     GET_EVENTS_ITEM,
-    GET_PLACES,
     GET_PLACE_ITEM,
     SET_LOADING
 } from '../types';
@@ -15,6 +16,9 @@ import {
 const JoaState  = props  => {
     const initialState = {
         categories : [],
+        category : {},
+        selectedCategory : [],
+        selectedPlace : {},
         places : [],
         place : {},
         events : [],
@@ -22,15 +26,16 @@ const JoaState  = props  => {
         loading : false
     }
 
-    const [state, dispatch] = useReducer(joaReducer, initialState);
+    const [state, dispatch] = useReducer(JoaReducer, initialState);
 
     // methods
-    const getCategories = () => {
-        setLoading();
 
+    const getCategories = async () => {
+        setLoading();
+        console.log("new loading 1", state.loading);
         const cagetoriesDb = [];
 
-        db.collection("categories")
+        await db.collection("categories")
         .get()
             .then(querySnapshot => {
                 querySnapshot.forEach((doc) => (
@@ -42,8 +47,8 @@ const JoaState  = props  => {
                     type : doc.data().type
                 })
             ));
+            console.log(" new categories in state", cagetoriesDb);
         });
-        console.log(" new categories ", cagetoriesDb);
 
         dispatch({
             type: GET_CATEGORIES,
@@ -51,20 +56,89 @@ const JoaState  = props  => {
         });
     };
 
+    const getCategory = async id => {
+        console.log("select category in home ", id);
+        let res  = await state.places.filter(i => i.category_id === id);
+
+        dispatch({
+            type: GET_CATEGORY,
+            payload: res
+        });
+      };
+
+    const getPlaces = async () => {
+    
+        let placesDb = []; 
+
+        db.collection("places")
+            .get()
+                .then(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        placesDb.push(doc.data());
+                    });
+                });
+
+        dispatch({
+            type: GET_PLACES,
+            payload: placesDb
+        });
+
+    }
+
+    const getPlace = async id => {
+        setLoading();
+        let placeInfo = {};
+        placeInfo = await state.places.filter(place => place.id === id);
+    
+        console.log("selected place ", placeInfo[0]);
+
+        dispatch({
+            type: GET_PLACE,
+            payload: placeInfo[0]
+        });
+      };
+
+    const getEvents = async () => {
+    
+        let eventsDb = []; 
+
+        db.collection("events")
+        .get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                eventsDb.push(doc.data());
+                });
+                console.log("events ", eventsDb);
+            });
+
+        dispatch({
+            type: GET_EVENTS,
+            payload: eventsDb
+        });
+    }
+
     const setLoading = () => dispatch({ type: SET_LOADING });
 
-    return  <joaContext.Provider
+    return  <JoaContext.Provider
         value={{
             places : state.places,
             place : state.places,
             events : state.events,
             event : state.event,
             loading : state.loading,
-            getCategories
+            categories : state.categories,
+            category : state.category,
+            selectedCategory : state.selectedCategory,
+            selectedPlace : state.selectedPlace,
+            getCategories,
+            getCategory,
+            getPlaces,
+            getPlace,
+            getEvents,
         }}
     >
         {props.children}
-    </joaContext.Provider>
+    </JoaContext.Provider>
 }
 
 export default JoaState;

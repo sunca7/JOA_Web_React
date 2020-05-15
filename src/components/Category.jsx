@@ -1,51 +1,52 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState, useContext } from 'react'
 import PlaceItem from './PlaceItem'
 import GoogleMaps from './GoogleMaps'
+import JoaContext from '../context/joa/joaContext';
 
-class Category extends Component {
+const Category = () => {
+    const joaContext = useContext(JoaContext);
 
-    render () {
+    const { getPlaces, selectedCategory } = joaContext;
 
-        const categoryStyle = {
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            width: '80%',
-            marginLeft: 'auto',
-            marginRight: 'auto'
-          }
+      useEffect(() => {
+        getPlaces();
+        // eslint-diable-next-line
+    }, [])
 
-        const mapStyle = {
-            height: '450px',
-            maxWidth: '992px',
-            width: '100%',
-            marginLeft : 'auto',
-            marginRight : 'auto',
-            marginTop : '50px'
+    const categoryStyle = {
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto'
         }
 
-        return (
-            <div
-                className="category-container">
-                <div style={mapStyle}> 
-                    <GoogleMaps mapItems={this.props.categoryItems}/>
-                </div>
-                <div
-                    style={categoryStyle}>
-                    {this.props.categoryItems.map(item => (
-                    <PlaceItem
-                        key = {item.id}
-                        place={item}
-                    />
-                    ))}
-                </div>
-            </div>
-        )
+    const mapStyle = {
+        height: '450px',
+        maxWidth: '992px',
+        width: '100%',
+        marginLeft : 'auto',
+        marginRight : 'auto',
+        marginTop : '50px'
     }
-}
 
-Category.propTypes = {
-
+    return (
+        <div
+            className="category-container">
+            <div style={mapStyle}> 
+                <GoogleMaps mapItems={selectedCategory}/>
+            </div>
+            <div
+                style={categoryStyle}>
+                {selectedCategory.map(item => (
+                <PlaceItem
+                    key = {item.id}
+                    place={item}
+                />
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default Category
