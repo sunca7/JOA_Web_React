@@ -34,7 +34,7 @@ const EventDetail = ({ match }) => {
 
     if (!event)  return <Spinner />;
     else {
-        console.log("place info ", event);
+        console.log("event info ", event);
         return (
             <div className='detail-container' style={detailStyle}>
                 <Fragment>

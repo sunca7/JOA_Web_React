@@ -1,5 +1,5 @@
 import React, { useContext }from 'react';
-import PlaceItem from './PlaceItem';
+import EventItem from './EventItem';
 import JoaContext from '../context/joa/joaContext';
 
 const EventCategory = () => {
@@ -21,9 +21,9 @@ const EventCategory = () => {
             <div
                 style={categoryStyle}>
                 {events.map(item => (
-                <PlaceItem
+                <EventItem
                     key = {item.id}
-                    place={item}
+                    event={item}
                 />
                 ))}
             </div>

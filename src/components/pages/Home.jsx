@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Categories from './Categories';
-import db from '../db/index';
-import JoaState from '../context/joa/JoaState';
-import Category from './Category';
-import JoaContext from '../context/joa/joaContext';
-import Spinner from './layout/Spinner';
+import Categories from '../Categories';
+import db from '../../db/index';
+import JoaState from '../../context/joa/JoaState';
+import Category from '../Category';
+import JoaContext from '../../context/joa/joaContext';
+import Spinner from '../layout/Spinner';
 
 const Home = (props) => {
   const joaContext = useContext(JoaContext);

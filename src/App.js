@@ -2,11 +2,12 @@ import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.scss";
 import JoaState from './context/joa/JoaState';
-import Home from "./components/Home";
+import Home from "./components/pages/Home";
 import About from './components/pages/About'
 import Contact from './components/pages/Contact';
 import Category from './components/Category';
 import Detail from './components/Detail';
+import EventDetail from './components/EventDetails';
 import EventCategory from './components/EventCategory';
 import Navbar from './components/layout/Navbar';
 import Spinner from './components/layout/Spinner';
@@ -27,6 +28,7 @@ const App = () => {
               <Route exact path='/about' component={About}/>
               <Route exact path='/contact' component={Contact}/>
               <Route exact path='/Events' component={EventCategory} />
+              <Route exact path='/event/:id' component={EventDetail}/>
               <Route exact path='/:categoryName' component={Category} />
               <Route exact path='/details/:id' component={Detail}/>
             </Switch>

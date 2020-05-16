@@ -120,8 +120,8 @@ const JoaState  = props  => {
     const getEventItem = async id => {
         setLoading();
         let eventInfo = {};
-        eventInfo = await state.evetns.filter(event => event.id === id);
-    
+        eventInfo = await state.events.filter(event => event.id === id);
+        console.log("selected event 1 ", eventInfo);
         console.log("selected event ", eventInfo[0]);
 
         dispatch({
