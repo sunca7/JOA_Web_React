@@ -9,7 +9,6 @@ import {
     GET_CATEGORY,
     GET_EVENTS,
     GET_EVENT_ITEM,
-    GET_PLACE_ITEM,
     SET_LOADING
 } from '../types';
 
@@ -121,7 +120,6 @@ const JoaState  = props  => {
         setLoading();
         let eventInfo = {};
         eventInfo = await state.events.filter(event => event.id === id);
-        console.log("selected event 1 ", eventInfo);
         console.log("selected event ", eventInfo[0]);
 
         dispatch({

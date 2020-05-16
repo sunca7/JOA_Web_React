@@ -5,7 +5,6 @@ import {
     GET_EVENT_ITEM,
     GET_PLACES,
     GET_PLACE,
-    GET_PLACE_ITEM,
     SET_LOADING
 } from '../types';
 

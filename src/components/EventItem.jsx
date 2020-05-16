@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 const EventItem = props => {
 
@@ -22,6 +23,10 @@ const EventItem = props => {
             </Link>
         </Fragment>
     )
+}
+
+EventItem.propTypes = {
+    event : PropTypes.object.isRequired
 }
 
 export default EventItem

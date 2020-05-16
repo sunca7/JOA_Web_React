@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PlaceItem = props => {
 
@@ -25,6 +26,10 @@ const PlaceItem = props => {
         </Link>
         </Fragment>
     )
+}
+
+PlaceItem.propTypes = {
+    place : PropTypes.object.isRequired
 }
 
 export default PlaceItem
