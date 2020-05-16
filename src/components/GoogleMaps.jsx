@@ -1,21 +1,35 @@
-import React, { Component , useState, useEffect} from 'react';
-import { GoogleMap, Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import React, { useState } from 'react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { Link } from 'react-router-dom';
 
-const GoogleMaps = (props) => {
+const GoogleMap = (props) => {
 
-  const [selectedCenter, setSelectedCenter] = useState({});
+  const [selectedCenter, setSelectedCenter] = useState(null);
+  const [activeMarker, setActiveMarker] = useState({});
+  const [showingInfoWindow, setShowingInfoWindow] = useState(false);
 
-  useEffect(() => {
-                const listener = e => {
-                  if (e.key === "Escape") {
-                      setSelectedCenter(null);
-                  }
-                };
-                window.addEventListener("keydown", listener);
-                return () => {
-                  window.removeEventListener("keydown", listener);
-                };
-  },[]);
+  var bounds = new props.google.maps.LatLngBounds();
+
+  const onMarkerClick = (props, marker) => {
+    setActiveMarker(marker);
+    setSelectedCenter(props);
+    setShowingInfoWindow(true);
+    // bounds.extend(props.position);
+    // props.google.maps.fitBound(bounds);
+    console.log("position ", props.position);
+  }
+
+  const onInfoWindowClose = () => {
+    setActiveMarker(null);
+    setShowingInfoWindow(false);
+  }
+
+  const onMapClicked = () => {
+    if (showingInfoWindow) {
+      setActiveMarker(null);
+      setShowingInfoWindow(false);
+    }
+  }
 
   const displayMarkers = () => {
     return props.mapItems.map((item, index) => {
@@ -23,39 +37,32 @@ const GoogleMaps = (props) => {
                 key={index} 
                 id={index}
                 title={item.name.en || ''}
-                name={item.name.en || ''}
+                name={''}
                 position={{
                 lat: item.latitude,
                 lng: item.longitude
-              }}
-                onClick={() => {
-                  setSelectedCenter(item);
-                }} 
+                }}
+                onClick={onMarkerClick} 
               >
               </Marker> 
     })
   }
 
   const displayInfo = () => {
-      if (selectedCenter) {
+      if (selectedCenter) { 
         console.log("selectedCenter ", selectedCenter);
         return (
           <InfoWindow
-            onCloseClick={() => {
-                setSelectedCenter(null);
-            }}
-            position={{
-                lat: selectedCenter.latitude,
-                lng: selectedCenter.longitude
-            }}
-          >
-            <div style={{background :'white'}}>
-                {/* <h3>{selectedCenter.name.en || ''}</h3> */}
-                <p>Hours of operation:</p>
-              </div>
-        </InfoWindow> ); }}
-    
-  
+          marker={activeMarker}
+          onClose={onInfoWindowClose}
+          visible={showingInfoWindow}
+        > 
+            <div>
+              <h4>{selectedCenter.title || ''}</h4>
+            </div>
+        </InfoWindow>
+        ); 
+      }}
   
   const mapStyle = {
       height: '450px',
@@ -69,13 +76,15 @@ const GoogleMaps = (props) => {
           zoom={12}
           style={mapStyle}
           initialCenter={{ lat: 48.8566, lng: 2.3522}}
+          onClick={onMapClicked}
+          // bounds={bounds}          
         >
           {displayMarkers()}
-          {/* {displayInfo()} */}
+          {displayInfo()}
         </Map>
     );
   }
   
 export default GoogleApiWrapper({
     apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-  })(GoogleMaps);
+  })(GoogleMap);

@@ -1,7 +1,12 @@
-import React from 'react'
-import PlaceItem from './PlaceItem'
+import React, { useContext }from 'react';
+import PlaceItem from './PlaceItem';
+import JoaContext from '../context/joa/joaContext';
 
-const EventCategory = (props) => {
+const EventCategory = () => {
+    const joaContext = useContext(JoaContext);
+
+    const { events } = joaContext;
+
     const categoryStyle = {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
@@ -10,21 +15,12 @@ const EventCategory = (props) => {
         marginRight: 'auto'
       }
 
-    const mapStyle = {
-        height: '450px',
-        maxWidth: '992px',
-        width: '100%',
-        marginLeft : 'auto',
-        marginRight : 'auto',
-        marginTop : '50px'
-    }
-
     return (
         <div
             className="event-category-container">
             <div
                 style={categoryStyle}>
-                {this.props.categoryItems.map(item => (
+                {events.map(item => (
                 <PlaceItem
                     key = {item.id}
                     place={item}

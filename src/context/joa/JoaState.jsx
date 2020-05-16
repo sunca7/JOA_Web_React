@@ -8,7 +8,7 @@ import {
     GET_PLACE,
     GET_CATEGORY,
     GET_EVENTS,
-    GET_EVENTS_ITEM,
+    GET_EVENT_ITEM,
     GET_PLACE_ITEM,
     SET_LOADING
 } from '../types';
@@ -117,6 +117,19 @@ const JoaState  = props  => {
         });
     }
 
+    const getEventItem = async id => {
+        setLoading();
+        let eventInfo = {};
+        eventInfo = await state.evetns.filter(event => event.id === id);
+    
+        console.log("selected event ", eventInfo[0]);
+
+        dispatch({
+            type: GET_EVENT_ITEM,
+            payload: eventInfo[0]
+        });
+      };
+
     const setLoading = () => dispatch({ type: SET_LOADING });
 
     return  <JoaContext.Provider
@@ -135,6 +148,7 @@ const JoaState  = props  => {
             getPlaces,
             getPlace,
             getEvents,
+            getEventItem
         }}
     >
         {props.children}

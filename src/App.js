@@ -26,9 +26,7 @@ const App = () => {
               <Route exact path='/' component={Home}/>
               <Route exact path='/about' component={About}/>
               <Route exact path='/contact' component={Contact}/>
-              {/* <Route exact path='/Events' render={props => ( 
-                <EventCategory { ...props } categoryItems={events} />
-              )}/> */}
+              <Route exact path='/Events' component={EventCategory} />
               <Route exact path='/:categoryName' component={Category} />
               <Route exact path='/details/:id' component={Detail}/>
             </Switch>

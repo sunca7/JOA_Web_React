@@ -2,7 +2,7 @@ import {
     GET_CATEGORIES,
     GET_CATEGORY,
     GET_EVENTS,
-    GET_EVENTS_ITEM,
+    GET_EVENT_ITEM,
     GET_PLACES,
     GET_PLACE,
     GET_PLACE_ITEM,
@@ -37,6 +37,12 @@ export default (state, action) => {
             return {
                 ...state,
                 events: action.payload,
+            };
+        case GET_EVENT_ITEM: 
+            return {
+                ...state,
+                event: action.payload,
+                loading: false
             };
         case SET_LOADING:
             return {
