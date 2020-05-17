@@ -5,20 +5,26 @@
   padding: 0;
 
   #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
   }
 }
 
 html,
 body {
-  background: $primary-color;
+  background: #fbab9d;
+  //#e7a898;
   font-weight: map-get($map: $font-weights, $key: bold);
   font-family: 'Source Sans Pro', sans-serif;
   color: black;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100% !important;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height : inherit;
+  min-height: 100% !important;
+  // background: whitesmoke;
 }

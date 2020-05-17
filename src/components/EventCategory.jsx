@@ -6,25 +6,13 @@ const EventCategory = () => {
     const joaContext = useContext(JoaContext);
     const { events } = joaContext;
 
-    const categoryStyle = {
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        width: '80%',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-      }
-
     return (
-        <div
-            className="event-category-container">
-            <div
-                style={categoryStyle}>
+        <div className='event-category-container' >
+            <div className='event-category-grid' >
                 {events.map(item => (
                 <EventItem
                     key = {item.id}
-                    event={item}
-                />
-                ))}
+                    event={item} /> ))}
             </div>
         </div>
     )

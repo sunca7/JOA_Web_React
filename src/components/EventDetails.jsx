@@ -12,37 +12,16 @@ const EventDetail = ({ match }) => {
         getEventItem(match.params.id);
         // eslint-diable-next-line
     }, [])
-   
-    const imageStyle = {
-        width : '50%'
-    }
-
-    const detailStyle = {
-        marginTop: '20px',
-        width: '80vw',
-        height: '80vh',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-        // background: $accent-color
-    }
-
-    const textStyle = {
-        color: 'black',
-        margin: '2vw',
-        fontSize: '3vw'
-    }
 
     if (!event)  return <Spinner />;
     else {
         console.log("event info ", event);
         return (
-            <div className='detail-container' style={detailStyle}>
-                <Fragment>
-                    <img src={event.picture} alt="place-main-img" style={imageStyle}/>
-                    <Fragment class="details-info" style={textStyle}>
-                        <p> Share </p>
-                    </Fragment>
-                </Fragment>
+            <div className='detail-container'>
+                <img className='detail-img' src={event.picture} alt="place-main-img"/>
+                <div className="details-info" >
+                    <p> Share </p>
+                </div>
             </div>
         );
     }

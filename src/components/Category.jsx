@@ -13,37 +13,16 @@ const Category = () => {
         // eslint-diable-next-line
     }, [])
 
-    const categoryStyle = {
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        width: '80%',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-        }
-
-    const mapStyle = {
-        height: '450px',
-        maxWidth: '992px',
-        width: '100%',
-        marginLeft : 'auto',
-        marginRight : 'auto',
-        marginTop : '50px'
-    }
-
     return (
-        <div
-            className="category-container">
-            <div style={mapStyle}> 
+        <div className="category-container">
+            <div className='map-container'> 
                 <GoogleMaps mapItems={selectedCategory}/>
             </div>
-            <div
-                style={categoryStyle}>
+            <div className='category-grid'>
                 {selectedCategory.map(item => (
                 <PlaceItem
                     key = {item.id}
-                    place={item}
-                />
-                ))}
+                    place={item} />))}
             </div>
         </div>
     )

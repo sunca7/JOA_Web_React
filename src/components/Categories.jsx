@@ -8,11 +8,6 @@ const Categories = () => {
 
   const { categories, loading, getCategories } = joaContext;
 
-  const categoriesStyle = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-  }
-
   useEffect(() => {
     getCategories();
     // eslint-diable-next-line
@@ -22,16 +17,11 @@ const Categories = () => {
     return <Spinner />;
   } else {
     return ( 
-      <div
-        className="categories-container"
-        style={categoriesStyle}
-      >
+      <div className="categories-container">
         {categories.map(category => (
           <CategoryItem
             key = {category.id}
-            category={category}
-        />
-        ))}
+            category={category} /> ))}
       </div>
     )};
 }
