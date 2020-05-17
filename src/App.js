@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useContext } from 'react';
+import React, { Fragment, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.scss";
 import JoaState from './context/joa/JoaState';
@@ -15,14 +15,13 @@ import Spinner from './components/layout/Spinner';
 const App = () => {
 
   const [loading, setLoading] = useState(false);
-  const [events, setEvents] = useState([]);
 
   return (
     <JoaState>
       <Router>
         <div className="App">
           <Navbar />
-          <div className="container" style={{padding : '50px', width : '70vw', height: '70wh', marginLeft: 'auto', marginRight : 'auto' }}>
+          <div className="container">
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/about' component={About}/>

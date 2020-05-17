@@ -1,10 +1,9 @@
-import React, { useContext }from 'react';
+import React, { useContext } from 'react';
 import EventItem from './EventItem';
 import JoaContext from '../context/joa/joaContext';
 
 const EventCategory = () => {
     const joaContext = useContext(JoaContext);
-
     const { events } = joaContext;
 
     const categoryStyle = {
