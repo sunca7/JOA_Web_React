@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react'
+import './Components.scss';
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 
@@ -13,40 +14,19 @@ const Detail = ({ match }) => {
         // eslint-diable-next-line
     }, [])
    
-    const imageStyle = {
-        width : '50%'
-    }
-
-    const detailStyle = {
-        marginTop: '20px',
-        width: '80vw',
-        height: '80vh',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-        // background: $accent-color
-    }
-
-    const textStyle = {
-        color: 'black',
-        margin: '2vw',
-        fontSize: '3vw'
-    }
-
     if (!selectedPlace)  return <Spinner />;
     else {
         console.log("place info ", selectedPlace);
         return (
-            <div className='detail-container' style={detailStyle}>
-                <Fragment>
-                    <img src={selectedPlace.picture} alt="place-main-img" style={imageStyle}/>
-                    <Fragment class="details-info" style={textStyle}>
+            <div className='detail-container' >
+                    <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />
+                    <div className="details-info" >
                         {/* <p href={place.schedule.en || place.schedule.fr || ''}></p> */}
-                        <p> {selectedPlace.phone} </p>
-                        <p> {selectedPlace.address}</p>
-                        <p> {selectedPlace.website}</p>
-                        <p> Share </p>
-                    </Fragment>
-                </Fragment>
+                        <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>
+                        <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>
+                        <p> <i className="fas fa-home"/> {selectedPlace.website} </p>
+                        <p> <i className="fas fa-share-alt"/> Share </p>
+                    </div>
             </div>
         );
     }

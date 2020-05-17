@@ -1,19 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:200,300,400,500,600,700,800,900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700,900&display=swap");
-
-$primary-color: #003366;
-$accent-color: #1b998b;
-$text-color: #fff;
-$font-weights: (
-  "regular": 400,
-  "medium": 500,
-  "bold": 700
-);
+@import '../../assets/styles/variables';
 
 .nav-container {
   width: 100%;
-  height: 60px;
-  background-color: $accent-color;
+  height: 80px;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -46,8 +36,8 @@ $font-weights: (
 
     a {
       text-decoration: none;
-      font-weight: map-get($map: $font-weights, $key: bold);
-      font-family: "Titillium Web", sans-serif;
+      font-weight: map-get($map: $font-weights, $key: light);
+      font-family: 'Source Sans Pro', sans-serif;
       color: $text-color;
       font-size: 20px;
       text-transform: uppercase;

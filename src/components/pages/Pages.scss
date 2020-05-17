@@ -1,7 +1,6 @@
 @import '../../assets/styles/Variables';
 
 .home-container {
-  background : green;
   padding : 50px;
   width : 70vw;
   height: 70wh; 
@@ -9,6 +8,12 @@
   margin-Right : auto;
 }
 
-.hello {
-  background : red;
+.page-container {
+  padding: 50px;
+  font-weight: map-get($map: $font-weights, $key: medium);
+  color: whitesmoke;
+
+  h1 {
+    margin-bottom: 10px;
+  }
 }

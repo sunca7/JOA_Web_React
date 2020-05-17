@@ -1,0 +1,27 @@
+@import '../assets/styles/variables';
+
+.detail-container {
+    margin-top: 50px;
+    width : 50vw;
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    img {
+        width : 100%;
+        height : 50%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    p {
+        font-weight: map-get($map: $font-weights, $key: medium);
+        font-family: 'Source Sans Pro', sans-serif;
+        color: black;
+        margin: 2vw;
+        font-size: 30px;
+    }
+}

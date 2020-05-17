@@ -2,9 +2,10 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
+        <div className='page-container'>
             <h1>About JOA</h1>
-            <p>App to discover Korean cultural places</p>
+            <p>'JOA' means 'I like it' in Korean.</p>
+            <p>Let's discover places related to real korean culture in Paris!</p>
         </div>
     )
 }

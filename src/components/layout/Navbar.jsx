@@ -29,7 +29,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="nav-container" style={navStyle}>
+      <div className="nav-container">
         <div
           className="logo"
           style={{ maxWidth: "250px", padding: "0 10px", overflow: "hidden" }}
@@ -70,15 +70,5 @@ class Navbar extends Component {
     );
   }
 }
-
-const navStyle = {
-  width: "100%",
-  height: "60px",
-  backgroundColor: '#cec857',
-  display: "flex",
-  flexWrap: "wrap",
-  alignItems: "center",
-  overflow: "hidden"
-};
 
 export default Navbar;

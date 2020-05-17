@@ -1,11 +1,19 @@
+// "Roboto Slab", serif;
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:200,300,400,500,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700,900&display=swap");
+//'Source Sans Pro', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
 
-$primary-color: #003366;
-$accent-color: #d3bfb6;
-$text-color: #fff;
+
+
+$primary-color:  #0097A7;
+// #003366; #00796B;
+$accent-color: #FF9800;
+$text-color: black;
 $font-weights: (
+  "light" : 300,
   "regular": 400,
   "medium": 500,
+  "semi-bold" : 600,
   "bold": 700
 );
