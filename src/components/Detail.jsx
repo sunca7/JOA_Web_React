@@ -6,15 +6,14 @@ import JoaContext from '../context/joa/joaContext';
 const Detail = ({ match }) => {
 
     const joaContext = useContext(JoaContext);
-
-    const { selectedPlace, loading, getPlace } = joaContext;
+    const { selectedPlace, loading, getPlace, places } = joaContext;
 
     useEffect(() => {
         getPlace(match.params.id);
         // eslint-diable-next-line
     }, [])
    
-    if (!selectedPlace)  return <Spinner />;
+    if (!places || !selectedPlace)  return <Spinner />;
     else {
         console.log("place info ", selectedPlace);
         return (

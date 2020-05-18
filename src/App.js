@@ -13,7 +13,7 @@ import Navbar from './components/layout/Navbar';
 import Spinner from './components/layout/Spinner';
 
 const App = () => {
-
+  
   const [loading, setLoading] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ const App = () => {
               <Route exact path='/contact' component={Contact}/>
               <Route exact path='/Events' component={EventCategory} />
               <Route exact path='/event/:id' component={EventDetail}/>
-              <Route exact path='/:categoryName' component={Category} />
+              <Route exact path='/:id' component={Category} />
               <Route exact path='/details/:id' component={Detail}/>
             </Switch>
             </div>

@@ -1,21 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import EventItem from './EventItem';
 import JoaContext from '../context/joa/joaContext';
+import Spinner from './layout/Spinner';
 
 const EventCategory = () => {
     const joaContext = useContext(JoaContext);
-    const { events } = joaContext;
+    const { getEvents, events } = joaContext;
 
-    return (
-        <div className='event-category-container' >
-            <div className='event-category-grid' >
-                {events.map(item => (
-                <EventItem
-                    key = {item.id}
-                    event={item} /> ))}
+    useEffect(() => {
+        getEvents();
+        // eslint-diable-next-line
+    }, [])
+
+    if (!events) {
+        return <Spinner />;
+      } else {
+        return (
+            <div className='event-category-container' >
+                <div className='event-category-grid' >
+                    {events.map(item => (
+                    <EventItem
+                        key = {item.id}
+                        event={item} /> ))}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default EventCategory

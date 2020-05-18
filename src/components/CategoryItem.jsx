@@ -1,22 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
-import JoaContext from '../context/joa/joaContext';
 
 const CategoryItem = (props) => {
-  const joaContext = useContext(JoaContext);
-  const { getCategory } = joaContext;
 
   const { picture, name, id } = props.category;
 
-  const onClick = (id) => {
-    getCategory(id);
-  };
+  let urlParam = null;
+  if (name.en === 'Events')
+    urlParam = 'Events';
+  else 
+    urlParam = id;
 
   return (
-      <Link to={`/${name.en}`}
-            className="categoryItem" 
-            onClick={()=> onClick(id)}>
+      <Link to={`/${urlParam}`}
+            className="categoryItem">
           <img className="category-img" src={ picture } alt="category-img" />
           <h1 className="name-center" > {name.en} </h1>
       </Link>
