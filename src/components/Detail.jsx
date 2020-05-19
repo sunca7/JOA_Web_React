@@ -4,7 +4,6 @@ import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 
 const Detail = ({ match }) => {
-
     const joaContext = useContext(JoaContext);
     const { selectedPlace, loading, getPlace } = joaContext;
 

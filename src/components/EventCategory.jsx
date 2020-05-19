@@ -15,7 +15,7 @@ const EventCategory = () => {
     if (loading) return <Spinner />;
     return (
         <div className='event-category-container' >
-            <div className='event-category-grid' >
+            <div className='event-category-grid category-grid' >
                 {events.map(item => (
                 <EventItem
                     key = {item.id}

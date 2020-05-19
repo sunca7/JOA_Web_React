@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 
 const CategoryItem = (props) => {
-
   const { picture, name, id } = props.category;
 
   let urlParam = null;

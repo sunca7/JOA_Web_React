@@ -5,7 +5,6 @@ import Spinner from './layout/Spinner';
 
 const Categories = () => {
   const joaContext = useContext(JoaContext);
-
   const { categories, loading, getCategories } = joaContext;
 
   useEffect(() => {

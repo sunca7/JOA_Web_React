@@ -30,7 +30,6 @@ const JoaState  = props  => {
     // [Methods]
 
     // Categories & Places
-
     const getCategories = async () => {
         setLoading();
 
@@ -115,7 +114,6 @@ const JoaState  = props  => {
       };
 
     // Events
-
     const getEvents = async () => {
         setLoading();
 
@@ -156,7 +154,6 @@ const JoaState  = props  => {
       };
 
     // Loading
-
     const setLoading = () => dispatch({ type: SET_LOADING });
 
     return  <JoaContext.Provider

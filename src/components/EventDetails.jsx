@@ -1,11 +1,9 @@
-import React, { Fragment, useEffect, useState, useContext } from 'react'
+import React, { Fragment, useEffect, useContext } from 'react'
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 
 const EventDetail = ({ match }) => {
-
     const joaContext = useContext(JoaContext);
-
     const { event, loading, getEventItem } = joaContext;
 
     useEffect(() => {
