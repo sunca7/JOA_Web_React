@@ -27,13 +27,14 @@ const JoaState  = props  => {
 
     const [state, dispatch] = useReducer(JoaReducer, initialState);
 
-    // methods
+    // [Methods]
+
+    // Categories & Places
 
     const getCategories = async () => {
         setLoading();
-        console.log("new loading 1", state.loading);
-        const cagetoriesDb = [];
 
+        const cagetoriesDb = [];
         await db.collection("categories")
         .get()
             .then(querySnapshot => {
@@ -46,7 +47,6 @@ const JoaState  = props  => {
                     type : doc.data().type
                 })
             ));
-            console.log(" new categories in state", cagetoriesDb);
         });
 
         dispatch({
@@ -56,11 +56,9 @@ const JoaState  = props  => {
     };
 
     const getCategory = async id => {
-        let placesDb = []; 
-        
-        console.log("id in getCategory ", id);
-        console.log("get places in getCategory");
+        setLoading();
 
+        let placesDb = []; 
         await db.collection("places")
             .get()
                 .then(querySnapshot => {
@@ -80,8 +78,7 @@ const JoaState  = props  => {
     const getPlaces = async () => {
     
         let placesDb = []; 
-        console.log("get places ");
-        db.collection("places")
+        await db.collection("places")
             .get()
                 .then(querySnapshot => {
                     querySnapshot.forEach(doc => {
@@ -98,10 +95,9 @@ const JoaState  = props  => {
 
     const getPlace = async id => {
         setLoading();
+
         let placeInfo = {};
         let placesDb = []; 
-
-        console.log("get places in getPlace ");
         await db.collection("places")
             .get()
                 .then(querySnapshot => {
@@ -112,25 +108,24 @@ const JoaState  = props  => {
 
         placeInfo = placesDb.filter(place => place.id === id);
     
-        console.log("selected place in getPlace ", placeInfo[0]);
-
         dispatch({
             type: GET_PLACE,
             payload: placeInfo[0]
         });
       };
 
-    const getEvents = async () => {
-    
-        let eventsDb = []; 
+    // Events
 
+    const getEvents = async () => {
+        setLoading();
+
+        let eventsDb = []; 
         await db.collection("events")
         .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                 eventsDb.push(doc.data());
                 });
-                console.log("events ", eventsDb);
             });
 
         dispatch({
@@ -141,26 +136,26 @@ const JoaState  = props  => {
 
     const getEventItem = async id => {
         setLoading();
+
         let eventInfo = {};
         let eventsDb = []; 
-
         await db.collection("events")
         .get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                 eventsDb.push(doc.data());
                 });
-                console.log("events ", eventsDb);
             });
 
         eventInfo = eventsDb.filter(event => event.id === id);
-        console.log("selected event ", eventInfo[0]);
 
         dispatch({
             type: GET_EVENT_ITEM,
             payload: eventInfo[0]
         });
       };
+
+    // Loading
 
     const setLoading = () => dispatch({ type: SET_LOADING });
 

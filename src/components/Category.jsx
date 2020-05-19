@@ -6,15 +6,14 @@ import Spinner from './layout/Spinner';
 
 const Category = ({ match }) => {
     const joaContext = useContext(JoaContext);
-    const { places, getCategory, selectedCategory } = joaContext;
+    const { getCategory, selectedCategory, loading } = joaContext;
 
     useEffect(() => {
         getCategory(match.params.id);
         // eslint-diable-next-line
     }, [])
 
-    if (!places || !selectedCategory)  return <Spinner />;
-    else {
+    if (loading)  return <Spinner />;
     return (
         <div className="category-container">
             <div className='map-container'> 
@@ -22,12 +21,12 @@ const Category = ({ match }) => {
             </div>
             <div className='category-grid'>
                 {selectedCategory.map(item => (
-                <PlaceItem
-                    key = {item.id}
-                    place={item} />))}
+                    <PlaceItem
+                        key = {item.id}
+                        place={item} />))}
             </div>
         </div>
-    )}
+    )
 }
 
 export default Category

@@ -7,16 +7,15 @@ const CategoryItem = (props) => {
   const { picture, name, id } = props.category;
 
   let urlParam = null;
-  if (name.en === 'Events')
-    urlParam = 'Events';
-  else 
-    urlParam = id;
+  if (name.en === 'Events') {
+    urlParam = 'Events'; 
+  } else { 
+    urlParam = id; }
 
   return (
-      <Link to={`/${urlParam}`}
-            className="categoryItem">
-          <img className="category-img" src={ picture } alt="category-img" />
-          <h1 className="name-center" > {name.en} </h1>
+      <Link to={`/${urlParam}`} className="categoryItem">
+        <img className="category-img" src={ picture } alt="category-img" />
+        <h1 className="name-center" > {name.en} </h1>
       </Link>
   );  
 }

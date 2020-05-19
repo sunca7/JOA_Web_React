@@ -88,7 +88,7 @@ a {
 
     img {
         padding: 10px;
-        opacity: 0.5;
+        opacity: 1;
         width: calc(100% - 20px);
         height: 30vh; 
         flex: 1;
@@ -100,10 +100,11 @@ a {
         padding: 30px;
         font-weight: map-get($map: $font-weights, $key: medium);
         font-family: 'Source Sans Pro', sans-serif;
-        color : Black;
+        font-size: 2rem;
+        color : white;
         position: absolute;
-        top: 45%;
-        left: 10%;
+        top: 30%;
+        left: 25%;
     }
 
     .placeItem {
@@ -119,7 +120,11 @@ a {
 
         &:hover {
             img {
-              opacity: 1;
+              opacity:  0.5;
+            }
+
+            p {
+                color : black;
             }
         } 
     }

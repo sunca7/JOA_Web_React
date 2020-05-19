@@ -20,6 +20,7 @@ export default (state, action) => {
             return {
                 ...state,
                 selectedCategory: action.payload,
+                loading: false
             };
         case GET_PLACES: 
             return {
@@ -36,6 +37,7 @@ export default (state, action) => {
             return {
                 ...state,
                 events: action.payload,
+                loading: false
             };
         case GET_EVENT_ITEM: 
             return {

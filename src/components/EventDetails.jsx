@@ -13,18 +13,15 @@ const EventDetail = ({ match }) => {
         // eslint-diable-next-line
     }, [])
 
-    if (!event)  return <Spinner />;
-    else {
-        console.log("event info ", event);
-        return (
-            <div className='detail-container'>
-                <img className='detail-img' src={event.picture} alt="place-main-img"/>
-                <div className="details-info" >
-                    <p> Share </p>
-                </div>
+    if (loading) return <Spinner />;
+    return (
+        <div className='detail-container'>
+            <img className='detail-img' src={event.picture} alt="place-main-img"/>
+            <div className="details-info" >
+                <p> Share </p>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default EventDetail

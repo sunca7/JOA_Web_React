@@ -6,11 +6,9 @@ import Spinner from '../layout/Spinner';
 
 const Home = () => {
   const joaContext = useContext(JoaContext);
-  const { getPlaces, getEvents, getCategories } = joaContext;
+  const { getCategories } = joaContext;
   
   useEffect(() => {
-    getPlaces();
-    getEvents();
     getCategories();
   // eslint-diable-next-line
 }, [])

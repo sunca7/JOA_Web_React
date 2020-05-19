@@ -13,17 +13,15 @@ const Categories = () => {
     // eslint-diable-next-line
 }, [])
 
-  if (!categories) {
-    return <Spinner />;
-  } else {
-    return ( 
-      <div className="categories-container">
-        {categories.map(category => (
-          <CategoryItem
-            key = {category.id}
-            category={category} /> ))}
-      </div>
-    )};
+  if (loading)  return <Spinner />;
+  return ( 
+    <div className="categories-container">
+      {categories.map(category => (
+        <CategoryItem
+          key = {category.id}
+          category={category} /> ))}
+    </div>
+  );
 }
   
 export default Categories;
