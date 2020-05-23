@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ const GoogleMap = (props) => {
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
 
   var bounds = new props.google.maps.LatLngBounds();
+  const button = document.querySelector('button');
 
   const onMarkerClick = (props, marker) => {
     setActiveMarker(marker);
@@ -31,20 +33,30 @@ const GoogleMap = (props) => {
     }
   }
 
+  const onInfoWindowClick = () => {
+    if (showingInfoWindow) {
+    console.log("info window click")}
+    window.location.href = "http://localhost:3000/details/BliEYJT7BnkvdnogsF8J"; 
+  }
+
+  if (selectedCenter) { 
+    button.addEventListener('click', onInfoWindowClick);
+  }
+      
   const displayMarkers = () => {
     return props.mapItems.map((item, index) => {
       return <Marker 
                 key={index} 
-                id={index}
+                id={item.id}
                 title={item.name.en || ''}
-                name={''}
+                name={item.name.en || ''}
                 position={{
-                lat: item.latitude,
-                lng: item.longitude
+                  lat: item.latitude,
+                  lng: item.longitude
                 }}
                 onClick={onMarkerClick} 
-              >
-              </Marker> 
+              />
+              
     })
   }
 
@@ -52,12 +64,13 @@ const GoogleMap = (props) => {
       if (selectedCenter) { 
         console.log("selectedCenter ", selectedCenter);
         return (
-          <InfoWindow
-          marker={activeMarker}
-          onClose={onInfoWindowClose}
-          visible={showingInfoWindow}
-        > 
+          <InfoWindow className='infoWindow'
+            marker={activeMarker}
+            onClose={onInfoWindowClose}
+            visible={showingInfoWindow}
+        >             
             <div>
+              <button name='test'>info</button>
               <h4>{selectedCenter.title || ''}</h4>
             </div>
         </InfoWindow>
@@ -79,8 +92,8 @@ const GoogleMap = (props) => {
           onClick={onMapClicked}
           // bounds={bounds}          
         >
-          {displayMarkers()}
-          {displayInfo()}
+          { displayMarkers() }
+          { displayInfo() }
         </Map>
     );
   }

@@ -6,10 +6,10 @@ const CategoryItem = (props) => {
   const { picture, name, id } = props.category;
 
   let urlParam = null;
-  if (name.en === 'Events') {
+  if (name.en === 'Events') 
     urlParam = 'Events'; 
-  } else { 
-    urlParam = id; }
+  else
+    urlParam = id;
 
   return (
       <Link to={`/${urlParam}`} className="categoryItem">

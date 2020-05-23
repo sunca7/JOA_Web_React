@@ -1,11 +1,21 @@
 import React, { useEffect, useContext } from 'react'
 import './Components.scss';
+import { Slide } from 'react-slideshow-image';
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 
 const Detail = ({ match }) => {
     const joaContext = useContext(JoaContext);
     const { selectedPlace, loading, getPlace } = joaContext;
+    let photos = [];
+
+    const proprietes = {
+        duration: 5000,
+        transitionDuration: 500,
+        infinite: true,
+        indicators: true,
+        arrow: true
+    }
 
     useEffect(() => {
         getPlace(match.params.id);
@@ -15,14 +25,26 @@ const Detail = ({ match }) => {
     if (loading)  return <Spinner />;
     return (
         <div className='detail-container' >
-                <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />
-                <div className="details-info" >
-                    {/* <p href={place.schedule.en || place.schedule.fr || ''}></p> */}
-                    <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>
-                    <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>
-                    <p> <i className="fas fa-home"/> {selectedPlace.website} </p>
-                    <p> <i className="fas fa-share-alt"/> Share </p>
-                </div>
+            {selectedPlace.newPhotos && 
+                <div className="slide-container">
+                    <Slide {...proprietes}>
+                        {selectedPlace.newPhotos.map(photo => (
+                            <div className="each-slide">
+                                <div>
+                                    <img src={photo} alt="img"/>
+                                </div>
+                            </div>
+                            ))}
+                    </Slide>
+                </div>}
+            {!selectedPlace.newPhotos && <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />}
+            <div className="details-info" >
+                {/* <p href={place.schedule.en || place.schedule.fr || ''}></p> */}
+                {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
+                {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
+                {selectedPlace.website && <p> <i className="fas fa-home"/> {selectedPlace.website} </p>}
+                <p> <i className="fas fa-share-alt"/> Share </p>
+            </div>
         </div>
     );
 }

@@ -95,8 +95,10 @@ const JoaState  = props  => {
     const getPlace = async id => {
         setLoading();
 
-        let placeInfo = {};
-        let placesDb = []; 
+        let placeInfo = [];
+        let placesDb = [];
+        let selected = [];
+        let newPhotos = []; 
         await db.collection("places")
             .get()
                 .then(querySnapshot => {
@@ -106,10 +108,18 @@ const JoaState  = props  => {
                 });
 
         placeInfo = placesDb.filter(place => place.id === id);
-    
+                
+        selected = placeInfo[0];
+
+        if (selected && selected.secondary_pictures.length > 0) {
+            newPhotos.push(selected.picture);
+            newPhotos = newPhotos.concat(selected.secondary_pictures);
+            selected["newPhotos"] = newPhotos;
+        }
+
         dispatch({
             type: GET_PLACE,
-            payload: placeInfo[0]
+            payload: selected
         });
       };
 
