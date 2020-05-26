@@ -111,11 +111,19 @@ const JoaState  = props  => {
                 
         selected = placeInfo[0];
 
-        if (selected && selected.secondary_pictures.length > 0) {
+        if (selected && (selected.secondary_pictures.length > 0 || selected.menu.length > 0))
             newPhotos.push(selected.picture);
+
+        if (selected && selected.secondary_pictures.length > 0) {
             newPhotos = newPhotos.concat(selected.secondary_pictures);
-            selected["newPhotos"] = newPhotos;
         }
+
+        if (selected && selected.menu.length > 0) {
+            newPhotos = newPhotos.concat(selected.menu);
+        }
+
+        if (selected && (selected.secondary_pictures.length > 0 || selected.menu.length > 0))
+            selected["newPhotos"] = newPhotos;
 
         dispatch({
             type: GET_PLACE,
