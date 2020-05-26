@@ -3,6 +3,7 @@ import './Components.scss';
 import { Slide } from 'react-slideshow-image';
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
+import DetailMap from './DetailMap'
 
 const Detail = ({ match }) => {
     const joaContext = useContext(JoaContext);
@@ -44,6 +45,9 @@ const Detail = ({ match }) => {
                 {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
                 {selectedPlace.website && <p> <i className="fas fa-home"/> {selectedPlace.website} </p>}
                 <p> <i className="fas fa-share-alt"/> Share </p>
+            </div>
+            <div className='detail-map-container'> 
+                <DetailMap />
             </div>
         </div>
     );
