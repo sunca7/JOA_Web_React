@@ -14,8 +14,6 @@ import Spinner from './components/layout/Spinner';
 
 const App = () => {
   
-  const [loading, setLoading] = useState(false);
-
   return (
     <JoaState>
       <Router>

@@ -1,11 +1,14 @@
 @import '../../assets/styles/Variables';
 
 .home-container {
-  padding : 50px;
-  width : 70vw;
+  padding : 2vw;
   height: calc(100%-80px); 
   margin-left: auto;
   margin-Right : auto;
+
+  @media (min-width: 700px) {
+    width: 70vw;
+  }
 }
 
 .page-container {

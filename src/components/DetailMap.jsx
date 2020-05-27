@@ -6,21 +6,6 @@ const DetailMap = (props) => {
     const joaContext = useContext(JoaContext);
     const { selectedPlace } = joaContext;
 
-    // const displayMarkers = () => {
-    //     return props.mapItems.map((item, index) => {
-    //     return <Marker 
-    //                 key={index} 
-    //                 id={item.id}
-    //                 title={item.name.en || ''}
-    //                 name={item.name.en || ''}
-    //                 position={{
-    //                 lat: item.latitude,
-    //                 lng: item.longitude
-    //                 }}
-    //             />
-    //     })
-    // }
-
     const mapStyle = {
         height: '40vh',
         width: '50vw'
@@ -37,8 +22,8 @@ const DetailMap = (props) => {
                     title={selectedPlace.name.en || ''}
                     name={selectedPlace.name.en || ''}
                     position={{
-                    lat: selectedPlace.latitude,
-                    lng: selectedPlace.longitude
+                        lat: selectedPlace.latitude,
+                        lng: selectedPlace.longitude
                     }}
                 />
         </Map>
