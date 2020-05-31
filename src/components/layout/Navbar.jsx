@@ -3,28 +3,18 @@ import { Link } from "react-router-dom";
 import "./NavbarStyle.scss";
 
 class Navbar extends Component {
-  state = {
-    navList: ""
-  };
+  constructor(props) {
+    super(props);
 
-  // constructor(state) {
-  //   super(state);
-
-  //   this.state = { navList: document.getElementById("nav-lists") };
-  // }
-
-  componentDidMount() {
-    this.setState = {
-      navList: document.getElementById("nav-lists")
-    };
+    this.refNavList = React.createRef();
   }
 
   Show = () => {
-    this.state.navList.classList.add("_Menus-show");
+    this.refNavList.current.classList.add("_Menus-show");
   };
 
   Hide = () => {
-    this.state.navList.classList.remove("_Menus-show");
+    this.refNavList.current.classList.remove("_Menus-show");
   };
 
   render() {
@@ -43,12 +33,12 @@ class Navbar extends Component {
           </Link>
         </div>
         <div className="navbar">
-          <div className="icon-bar" id="bar" onClick={this.Show}>
+          <div className="fas fa-bars fa-2x icon-bar" id="bar" onClick={this.Show}>
             <i></i>
             <i></i>
             <i></i>
           </div>
-          <ul id="nav-lists">
+          <ul ref={this.refNavList} id="nav-lists">
             <li className="close">
               <span id="close" onClick={this.Hide}>
                 ×

@@ -60,7 +60,6 @@
       span {
         font-size: 40px;
         display: inline-block;
-        border: 1px solid #cccccc;
         padding: 0 10px;
         cursor: pointer;
       }
@@ -76,6 +75,7 @@
       cursor: pointer;
 
       i {
+        color: white;
         background-color: #ffffff;
         height: 2px;
       }
@@ -98,33 +98,32 @@
       ul {
         flex-wrap: nowrap;
         position: fixed;
-        left: 100%;
+        z-index: 1;
+        right: 100%;
         flex-direction: column;
         background: #ffffff;
-        width: 100%;
+        width: 30%;
         height: 100%;
         overflow: auto;
-        transition: left 0.3s;
-
-        li {
-          border: #cccccc 1px solid;
-        }
+        transition: right 0.3s;
 
         a {
           padding: 10px;
           font-size: 16px;
           height: auto;
           line-height: normal;
-          color: $text-color;
+          color: white;
         }
 
         .close {
+          color: white;
           display: block;
         }
       }
 
       .icon-bar {
         display: flex;
+        margin: auto;
       }
 
       ._Menus-show {

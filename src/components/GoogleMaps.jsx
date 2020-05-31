@@ -78,13 +78,14 @@ const GoogleMap = (props) => {
       }}
   
   const mapStyle = {
-      height: '450px',
+      height: '60%',
+      maxHeigth: '450px',
       maxWidth: '992px',
-      width: '100%'
+      width: '98%',
   }
 
     return (
-        <Map
+        <Map id='map'
           google={props.google}
           zoom={12}
           style={mapStyle}
