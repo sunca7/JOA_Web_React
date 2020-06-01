@@ -6,16 +6,11 @@ const DetailMap = (props) => {
     const joaContext = useContext(JoaContext);
     const { selectedPlace } = joaContext;
 
-    const mapStyle = {
-        height: '40vh',
-        width: '50vw'
-    }
-
     return (
-        <Map
+      <div className='detail-map-container'>
+        <Map id="detail-map"
           google={props.google}
           zoom={15}
-          style={mapStyle}
           initialCenter={{ lat: selectedPlace.latitude, lng: selectedPlace.longitude}}
         >
           <Marker 
@@ -27,6 +22,7 @@ const DetailMap = (props) => {
                     }}
                 />
         </Map>
+        </div>
     );
   }
   

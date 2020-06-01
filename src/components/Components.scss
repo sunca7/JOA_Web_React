@@ -86,8 +86,9 @@ a {
     @media (max-width: 480px) {
         width: 90vw;
         height: 60%;
-        min-height: 380px;
+        min-height: 450px;
         margin: 5px;
+        display : block;
     }
 
     #map {
@@ -173,17 +174,31 @@ a {
 }
 
 .detail-container {
+    display: block;
     margin-top: 50px;
     width : 50vw;
-    height: 80vh;
+    height: 100vh;
     margin-left: auto;
     margin-right: auto;
     background: white;
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
+    @media (max-width: 1024px) {
+        width : 80vw;
+        height: 100vh;
+        display: block;
+        overflow: auto;
+        word-wrap: break-word;
+    }
+
     .slide-container {
         width: 100%;
+    }
+
+    .details-info {
+        margin-top: 3vh;
+        margin-bottom: 3vh;
     }
 
     img {
@@ -197,7 +212,12 @@ a {
         font-weight: map-get($map: $font-weights, $key: medium);
         color: black;
         margin: 2vw;
-        font-size: 30px;
+        font-size: calc(15px + 0.8vw);
+        
+       
+        i {
+            display : inline;
+        }
     }
 }
 
@@ -206,4 +226,14 @@ a {
         height : 40vh;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+}
+
+.detail-map-container div{
+    width : 50vw;
+    height: 40vh;
+
+    @media (max-width: 1024px) {
+        width : 80vw;
+        height: 40vh;
+    }
 }

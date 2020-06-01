@@ -43,12 +43,10 @@ const Detail = ({ match }) => {
                 {/* <p href={place.schedule.en || place.schedule.fr || ''}></p> */}
                 {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
                 {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
-                {selectedPlace.website && <p> <i className="fas fa-home"/> {selectedPlace.website} </p>}
+                {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <text>{selectedPlace.website}</text></p></a>}
                 <p> <i className="fas fa-share-alt"/> Share </p>
             </div>
-            <div className='detail-map-container'> 
                 <DetailMap />
-            </div>
         </div>
     );
 }
