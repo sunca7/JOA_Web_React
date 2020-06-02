@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import PlaceItem from './PlaceItem'
 import GoogleMaps from './GoogleMaps'
 import JoaContext from '../context/joa/joaContext';
@@ -16,9 +16,7 @@ const Category = ({ match }) => {
     if (loading)  return <Spinner />;
     return (
         <div className="category-container">
-            <div className='map-container'> 
-                <GoogleMaps mapItems={selectedCategory}/>
-            </div>
+            <GoogleMaps mapItems={selectedCategory}/>
             <div className='category-grid'>
                 {selectedCategory.map(item => (
                     <PlaceItem

@@ -11,18 +11,15 @@ const DetailMap = (props) => {
         <Map id="detail-map"
           google={props.google}
           zoom={15}
-          initialCenter={{ lat: selectedPlace.latitude, lng: selectedPlace.longitude}}
-        >
+          initialCenter={{ lat: selectedPlace.latitude, lng: selectedPlace.longitude}}>
           <Marker 
-                    title={selectedPlace.name.en || ''}
-                    name={selectedPlace.name.en || ''}
-                    position={{
-                        lat: selectedPlace.latitude,
-                        lng: selectedPlace.longitude
-                    }}
-                />
+            title={selectedPlace.name.en || ''}
+            name={selectedPlace.name.en || ''}
+            position={{
+                lat: selectedPlace.latitude,
+                lng: selectedPlace.longitude}}/>
         </Map>
-        </div>
+      </div>
     );
   }
   

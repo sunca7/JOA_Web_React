@@ -85,17 +85,19 @@ const GoogleMap = (props) => {
   }
 
     return (
-        <Map id='map'
-          google={props.google}
-          zoom={12}
-          style={mapStyle}
-          initialCenter={{ lat: 48.8566, lng: 2.3522}}
-          onClick={onMapClicked}
-          // bounds={bounds}          
-        >
-          { displayMarkers() }
-          { displayInfo() }
-        </Map>
+      <div className='map-container'> 
+          <Map id='map'
+            google={props.google}
+            zoom={12}
+            style={mapStyle}
+            initialCenter={{ lat: 48.8566, lng: 2.3522}}
+            onClick={onMapClicked}
+            // bounds={bounds}          
+            >
+            { displayMarkers() }
+            { displayInfo() }
+          </Map>
+        </div>
     );
   }
   
