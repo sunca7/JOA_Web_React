@@ -67,7 +67,6 @@ a {
 }
 
 .category-container {
-    background: #fbab9d;
     display: block;
     // border: solid #69F0AE;
 }
@@ -181,6 +180,21 @@ a {
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
+    .share {
+        bottom: 20px;
+    }
+
+    button {
+        margin: 0px 5px;
+        width: calc(30px + 0.8vw);
+    }
+
+    svg {
+        top: 20px;
+        width: calc(30px + 0.8vw);
+        height: auto;
+    }
+
     @media (max-width: 1024px) {
         width : 80vw;
         height: 100vh;
@@ -210,7 +224,8 @@ a {
         color: black;
         margin: 2vw;
         font-size: calc(15px + 0.8vw);
-        
+        justify-content: center;
+
         @media (max-width: 640px) {
             font-size: 15px;
         }
