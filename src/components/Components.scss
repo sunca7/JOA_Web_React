@@ -38,7 +38,7 @@ a {
     position: relative;
     text-align: center;
     text-align: justify;
-    margin: 1vw;
+    margin: 3vw;
     background-color: whitesmoke;
     border-radius: 10px;
     // border: solid #00C853;
@@ -74,13 +74,32 @@ a {
 .map-container {
     // background : white;
     // padding: 10px;
-    height: 592px;
+    max-height: 592px;
     max-width: 992px;
-    width: calc(100%-20px);
+    width : 80vw;
+    height: 60vh;
     margin-left : auto;
     margin-right : auto;
     margin-top : 50px;
     display : block;
+
+    div {
+        max-height: 592px;
+        max-width: 992px;
+        width : 80vw;
+        height: 60vh;
+        margin-left : auto;
+        margin-right : auto;
+
+        @media (max-width: 1024px) {
+            width: 90vw;
+            height: 60vh;
+            min-height: 384px;
+            margin: 5px;
+            margin-left : auto;
+        margin-right : auto;
+        }
+    }
 
     @media (max-width: 1024px) {
         width: 90vw;
@@ -179,6 +198,11 @@ a {
     background: white;
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    
+    i {
+        margin-right: 10px;
+        align-self: center;
+    }
 
     .share {
         bottom: 20px;

@@ -54,9 +54,7 @@ const GoogleMap = (props) => {
                   lat: item.latitude,
                   lng: item.longitude
                 }}
-                onClick={onMarkerClick} 
-              />
-              
+                onClick={onMarkerClick} />
     })
   }
 
@@ -76,20 +74,12 @@ const GoogleMap = (props) => {
         </InfoWindow>
         ); 
       }}
-  
-  const mapStyle = {
-      height: '60%',
-      maxHeigth: '450px',
-      maxWidth: '992px',
-      width: '98%',
-  }
 
     return (
       <div className='map-container'> 
           <Map id='map'
             google={props.google}
             zoom={12}
-            style={mapStyle}
             initialCenter={{ lat: 48.8566, lng: 2.3522}}
             onClick={onMapClicked}
             // bounds={bounds}          

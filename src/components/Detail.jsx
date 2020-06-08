@@ -56,9 +56,9 @@ const Detail = ({ match }) => {
             {!selectedPlace.newPhotos && <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />}
             <div className="details-info" >
                 {/* <p href={place.schedule.en || place.schedule.fr || ''}></p> */}
-                {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
+                        {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
                 {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
-                {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <text>{selectedPlace.website}</text></p></a>}
+                {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <span>{selectedPlace.website}</span></p></a>}
                 <p> <i className="fas fa-share-alt share"/> 
                 <EmailShareButton url="www.google.com"><EmailIcon round={true} /></EmailShareButton>
                 <FacebookShareButton url="www.google.com" ><FacebookIcon id='icon' round={true} /></FacebookShareButton>
