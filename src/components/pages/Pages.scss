@@ -1,9 +1,88 @@
 @import '../../assets/styles/Variables';
 
-.home-container {
-  padding : 2vw;
-  padding-top: 5%;
-  height: calc(100%-80px); 
+
+
+.hello-container {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background: white;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  // z-index: 5;
+
+  .title {
+    font-size: 35em;
+    // justify-content: center;
+    // align-content: center;
+    height: 60vh;
+    line-height: 60vh;
+    text-align: center;
+    font-weight: 100;
+   
+
+    @media (max-width: 1024px) {
+      height: 60vh;
+      line-height: 60vh;
+      font-size: 20em;
+    }
+
+    @media (max-width: 640px) {
+      height: 80vw;
+      line-height: 80vw;
+      font-size: 40vw;
+    }
+  }
+
+  .info {
+    font-size: 3vw;
+    // justify-content: center;
+    // align-content: center;
+    // margin-top: 5vh;
+    text-align: center;
+
+    @media (max-width: 1024px) {
+      font-size: 10vw;
+    }
+  }
+
+  a.button1 {
+    margin: 0 auto;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    width: 80px;
+    display: block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid black;
+    // margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    transition: all 0.2s;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    
+    &:hover{
+      color: white;
+      background-color: black;
+    }
+
+    @media all and (max-width:30em) {
+       display: block;
+       margin: 0.4em auto;
+    }
+  }
+}
+
+
+.categories {
+  padding : 0px 2vw;
+  height: calc(100vh - 100px);
   margin-left: auto;
   margin-Right : auto;
 

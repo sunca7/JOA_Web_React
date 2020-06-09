@@ -3,6 +3,7 @@ import "./Pages.scss";
 import Categories from '../Categories';
 import JoaContext from '../../context/joa/joaContext';
 import Spinner from '../layout/Spinner';
+import { animateScroll as scroll } from 'react-scroll';
 
 const Home = () => {
   const joaContext = useContext(JoaContext);
@@ -14,8 +15,16 @@ const Home = () => {
 }, [])
  
   return (
-    <div className='home-container' >
-      <Categories />
+    <div className='home-container'>
+      <div className='hello-container'>
+        <p className='title'> 안녕</p>
+        <p className='info'> *Bonjour</p>
+        <a class="button1" onClick={() => scroll.scrollToBottom()}>Enter</a>
+        {/* <a href="something" class="button1">Enter</a> */}
+      </div>
+      <div className='categories' >
+        <Categories />
+      </div>
     </div>
   )
 }

@@ -18,8 +18,9 @@ class Navbar extends Component {
   };
 
   render() {
+
     return (
-      <div className="nav-container">
+      <div className="nav-container sticky" id='navbar'>
         <div
           className="logo"
           style={{ maxWidth: "250px", padding: "0 10px", overflow: "hidden" }}

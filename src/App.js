@@ -18,7 +18,9 @@ const App = () => {
     <JoaState>
       <Router>
         <div className="App">
-          <Navbar />
+          <div className='nav'>
+            <Navbar />
+          </div>
           <div className="container">
             <Switch>
               <Route exact path='/' component={Home}/>
