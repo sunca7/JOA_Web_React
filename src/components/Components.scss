@@ -141,6 +141,21 @@ a {
     }
 }
 
+.infoBtn {
+    width: 40px;
+    display: block;
+    padding: 0.35em 0.35em;
+    border: 0.1em solid black;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-align: center;
+
+    &:hover{
+        color: white;
+        background-color: #fdc5b0;
+    }
+}
+
 .category-grid {
     display: grid;
     padding: 10px;
