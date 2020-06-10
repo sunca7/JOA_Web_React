@@ -1,7 +1,5 @@
 @import '../../assets/styles/Variables';
 
-
-
 .hello-container {
   width: 100vw;
   height: calc(100vh - 80px);
@@ -12,7 +10,7 @@
   // z-index: 5;
 
   .title {
-    font-size: 35em;
+    font-size: calc(23em + 2vw);
     // justify-content: center;
     // align-content: center;
     height: 60vh;
@@ -21,38 +19,38 @@
     font-weight: 100;
    
 
-    @media (max-width: 1024px) {
+    @media (max-width:1279px) and (min-width:640px) {
       height: 60vh;
       line-height: 60vh;
-      font-size: 20em;
+      font-size: calc(18em + 2vw);
     }
 
     @media (max-width: 640px) {
       height: 80vw;
       line-height: 80vw;
-      font-size: 40vw;
+      font-size: 50vw;
     }
   }
 
   .info {
-    font-size: 3vw;
+    font-size: calc(30px + 1vw);
     // justify-content: center;
     // align-content: center;
     // margin-top: 5vh;
     text-align: center;
 
     @media (max-width: 1024px) {
-      font-size: 10vw;
+      font-size: calc(20px + 2vw);
     }
   }
 
   a.button1 {
     margin: 0 auto;
-    margin-top: 10vh;
+    margin-top: calc(50px + 2vh);
     margin-bottom: 5vh;
-    width: 80px;
+    width: 110px;
     display: block;
-    padding: 0.35em 1.2em;
+    padding: 0.35em 0.5em;
     border: 0.1em solid black;
     // margin: 0 0.3em 0.3em 0;
     border-radius: 0.12em;

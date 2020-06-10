@@ -20,7 +20,7 @@
 // Places
 
 .categories-container {
-    margin-top: 11vh;
+    margin-top: calc(100px + 2vh);
     display: grid;
     grid-template-columns: 1fr 1fr;
     width : 70vw;
@@ -31,7 +31,7 @@
     margin-right: auto;
     align-items: center;
 
-    @media (max-width: 1280x) {
+    @media (max-width: 1280px) {
         width : 70vw;
         margin-left: auto;
         margin-right: auto;
