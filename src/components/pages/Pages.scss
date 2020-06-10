@@ -98,5 +98,42 @@
 
   h1 {
     margin-bottom: 10px;
+    font-size: calc(20px + 2vw);
+  }
+
+  p{
+    font-size: calc(15px + 2vw);
+  }
+
+  @media (max-width: 700px) {
+    padding: 50px 20px;
+  }
+}
+
+.about-container {
+  background-color: white;
+  padding: 50px;
+  font-weight: map-get($map: $font-weights, $key: medium);
+  color: 	black;
+  height: calc(100vh - 180px);
+
+  #joa {
+    text-align: center;
+    padding : 0px;
+    font-size: 40vw;
+
+    @media (min-width: 1280px) {
+      font-size: 30em;
+    }
+  } 
+
+  h1 {
+    margin-bottom: 10px;
+    justify-content: start;
+  }
+
+  #meaning {
+    font-size: calc(10px + 2vw);
+    text-align: center;
   }
 }
