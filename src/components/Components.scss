@@ -192,6 +192,7 @@ a {
             flex: 1;
             // resize: contain;
             border : 50px;
+            border-radius: 15px;
 
             @media (max-width: 640px) {
                 padding : 0px;
@@ -208,10 +209,10 @@ a {
             padding: 1rem;
             font-weight: map-get($map: $font-weights, $key: medium);
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: calc(15px + 0.8vw);
+            font-size: calc(15px + 2vw);
             color : white;
             top: 30%;
-            left: 25%;
+            left: 15%;
 
             @media (max-width: 640px) {
                 top: 10%;

@@ -20,7 +20,7 @@ const Home = () => {
         <p className='title'> 안녕</p>
         <p className='info'> "Ahn Nyeong"</p>
         <p className='info'>*Salut</p>
-        <a class="button1" onClick={() => scroll.scrollToBottom()}>Enter</a>
+        <a className="button1" onClick={() => scroll.scrollToBottom()}>Enter</a>
         {/* <a href="something" class="button1">Enter</a> */}
       </div>
       <div className='categories' >

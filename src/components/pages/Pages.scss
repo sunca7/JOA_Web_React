@@ -90,12 +90,14 @@
 }
 
 .page-container {
+  background-color: white;
   padding: 50px;
   font-weight: map-get($map: $font-weights, $key: medium);
-  color: 	#02457c;
+  color: 	black;
+  height: calc(100vh - 180px);
 
   h1 {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: calc(20px + 2vw);
   }
 
@@ -110,10 +112,10 @@
 
 .about-container {
   background-color: white;
-  padding: 50px;
+  padding: 20px 50px;
   font-weight: map-get($map: $font-weights, $key: medium);
   color: 	black;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 120px);
 
   #joa {
     text-align: center;
@@ -121,7 +123,7 @@
     font-size: 40vw;
 
     @media (min-width: 1280px) {
-      font-size: 30em;
+      font-size: 25em;
     }
   } 
 
