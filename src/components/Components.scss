@@ -109,23 +109,14 @@ a {
     max-width: 992px;
     width : 80vw;
     height: 60vh;
-    // margin-left : auto;
-    // margin-right : auto;
     margin-top : 50px;
     display : block;
 
     div {
-        // max-height: 592px;
-        // max-width: 992px;
-        // width : 80vw;
-        // height: 60vh;
         margin-left : auto;
         margin-right : auto;
 
         @media (max-width: 1024px) {
-            width: 90vw;
-            height: 60vh;
-            min-height: 384px;
             margin: 5px;
             margin-left : auto;
             margin-right : auto;
@@ -158,13 +149,20 @@ a {
 
 .category-grid {
     display: grid;
-    padding: 10px;
+    padding: 20px 10px;
     grid-template-columns: 1fr 1fr;
     max-width: 992px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     // background: white;
+
+
+    @media (min-width: 1300px) {
+        padding-top: 30px;
+        grid-template-columns: 1fr 1fr 1fr;
+        max-width: 90vw;
+    }
 
     @media (max-width: 640px) {
         padding : 0px;
