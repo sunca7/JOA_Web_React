@@ -10,37 +10,24 @@
   // z-index: 5;
 
   .title {
-    font-size: calc(23em + 2vw);
     // justify-content: center;
     // align-content: center;
-    height: 60vh;
-    line-height: 60vh;
+    // height: 60vh;
+    // line-height: 60vh;
     text-align: center;
-    font-weight: 100;
-   
+    font-weight: map-get($map: $font-weights, $key: medium);
+    padding : 0px;
+    font-size: 40vw;
 
-    @media (max-width:1279px) and (min-width:640px) {
-      height: 60vh;
-      line-height: 60vh;
-      font-size: calc(18em + 2vw);
+    @media (min-width: 1280px) {
+      font-size: 26em;
     }
 
     @media (max-width: 640px) {
+      padding-top: calc(20px + 3vh);
       height: 80vw;
       line-height: 80vw;
       font-size: 50vw;
-    }
-  }
-
-  .info {
-    font-size: calc(30px + 1vw);
-    // justify-content: center;
-    // align-content: center;
-    // margin-top: 5vh;
-    text-align: center;
-
-    @media (max-width: 1024px) {
-      font-size: calc(20px + 2vw);
     }
   }
 
@@ -73,6 +60,10 @@
     @media all and (max-width:30em) {
        display: block;
        margin: 0.4em auto;
+    }
+
+    @media (min-width: 1280px) {
+      margin-top: calc(35px);
     }
   }
 }
@@ -123,7 +114,7 @@
     font-size: 40vw;
 
     @media (min-width: 1280px) {
-      font-size: 25em;
+      font-size: 26em;
     }
   } 
 
@@ -131,9 +122,10 @@
     margin-bottom: 10px;
     justify-content: start;
   }
+}
 
-  #meaning {
-    font-size: calc(10px + 2vw);
-    text-align: center;
-  }
+#meaning {
+  font-size: calc(10px + 2vw);
+  text-align: center;
+  font-weight: map-get($map: $font-weights, $key: medium);
 }

@@ -164,9 +164,12 @@ a {
         max-width: 90vw;
     }
 
+
     @media (max-width: 640px) {
         padding : 0px;
         margin-top: 1rem;
+        // grid-template-columns: 1fr;
+        // max-width: 90vw;
     }
 
     .placeItem {
@@ -244,6 +247,10 @@ a {
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     
+    #name {
+        text-align: center;
+    }
+
     i {
         margin-right: 10px;
         align-self: center;

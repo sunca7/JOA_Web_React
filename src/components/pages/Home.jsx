@@ -18,8 +18,8 @@ const Home = () => {
     <div className='home-container'>
       <div className='hello-container'>
         <p className='title'> 안녕</p>
-        <p className='info'> "Ahn Nyeong"</p>
-        <p className='info'>*Salut</p>
+        <p id='meaning'> "Ahn Nyeong"</p>
+        <p id='meaning'>*Salut</p>
         <a className="button1" onClick={() => scroll.scrollToBottom()}>Enter</a>
         {/* <a href="something" class="button1">Enter</a> */}
       </div>
