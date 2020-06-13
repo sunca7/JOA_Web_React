@@ -9,8 +9,8 @@ const About = () => {
                 <source src={video} type='video/mp4' />
             </video>
             <p id='joa'>좋아</p>
-            <p id='meaning'>"JOA" means 'I like it' in Korean.</p>
-            <p id='meaning'>Let's discover places related to real korean culture in Paris!</p>
+            <p id='meaning'>"JOA" signifie «j'aime ça» en coréen.</p>
+            <p id='meaning'>Découvrons des lieux liés à la vraie culture coréenne à Paris!</p>
         </div>
     )
 }

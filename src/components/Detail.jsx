@@ -23,7 +23,6 @@ import {
 const Detail = ({ match }) => {
     const joaContext = useContext(JoaContext);
     const { selectedPlace, loading, getPlace } = joaContext;
-    let photos = [];
 
     const proprietes = {
         duration: 3000,
@@ -32,6 +31,8 @@ const Detail = ({ match }) => {
         indicators: true,
         arrow: true
     }
+
+    const shareUrl = 'joa-korea.com/details/' + selectedPlace.id; 
 
     useEffect(() => {
         getPlace(match.params.id);
@@ -61,11 +62,11 @@ const Detail = ({ match }) => {
                 {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
                 {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <span>{selectedPlace.website}</span></p></a>}
                 <p> <i className="fas fa-share-alt share"/> 
-                <EmailShareButton url="www.google.com"><EmailIcon round={true} /></EmailShareButton>
-                <FacebookShareButton url="www.google.com" ><FacebookIcon id='icon' round={true} /></FacebookShareButton>
-                <RedditShareButton url="www.google.com" ><RedditIcon id='icon' round={true} /></RedditShareButton>
-                <TwitterShareButton url="www.google.com"><TwitterIcon id='icon' round={true} /></TwitterShareButton>
-                <WhatsappShareButton url="www.google.com"> <WhatsappIcon id='icon' round={true} /></WhatsappShareButton></p>
+                <EmailShareButton url={shareUrl}><EmailIcon round={true} /></EmailShareButton>
+                <FacebookShareButton url={shareUrl} ><FacebookIcon id='icon' round={true} /></FacebookShareButton>
+                <RedditShareButton url={shareUrl} ><RedditIcon id='icon' round={true} /></RedditShareButton>
+                <TwitterShareButton url={shareUrl}><TwitterIcon id='icon' round={true} /></TwitterShareButton>
+                <WhatsappShareButton url={shareUrl}> <WhatsappIcon id='icon' round={true} /></WhatsappShareButton></p>
             </div>
                 <DetailMap />
         </div>

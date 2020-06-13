@@ -21,6 +21,8 @@ const EventDetail = ({ match }) => {
     const joaContext = useContext(JoaContext);
     const { event, loading, getEventItem } = joaContext;
 
+    const shareUrl = 'joa-korea.com/event/' + event.id;
+
     useEffect(() => {
         getEventItem(match.params.id);
         // eslint-diable-next-line
@@ -35,11 +37,11 @@ const EventDetail = ({ match }) => {
             {event.description && <p id='description'>{event.description.fr || event.description.en}</p>}
             {event.website && <a target="_blank" rel="noopener noreferrer" href={event.website}> <p> <i className="fas fa-home"/> <span>Cliquez ici pour découvrir en ligne</span></p></a>}
             <p> <i className="fas fa-share-alt share"/> 
-                <EmailShareButton url="www.google.com"><EmailIcon round={true} /></EmailShareButton>
-                <FacebookShareButton url="www.google.com" ><FacebookIcon id='icon' round={true} /></FacebookShareButton>
-                <RedditShareButton url="www.google.com" ><RedditIcon id='icon' round={true} /></RedditShareButton>
-                <TwitterShareButton url="www.google.com"><TwitterIcon id='icon' round={true} /></TwitterShareButton>
-                <WhatsappShareButton url="www.google.com"> <WhatsappIcon id='icon' round={true} /></WhatsappShareButton></p>
+                <EmailShareButton url={shareUrl}><EmailIcon round={true} /></EmailShareButton>
+                <FacebookShareButton url={shareUrl} ><FacebookIcon id='icon' round={true} /></FacebookShareButton>
+                <RedditShareButton url={shareUrl} ><RedditIcon id='icon' round={true} /></RedditShareButton>
+                <TwitterShareButton url={shareUrl}><TwitterIcon id='icon' round={true} /></TwitterShareButton>
+                <WhatsappShareButton url={shareUrl}> <WhatsappIcon id='icon' round={true} /></WhatsappShareButton></p>
             </div>
         </div>
     );

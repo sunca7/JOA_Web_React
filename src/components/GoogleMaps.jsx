@@ -103,16 +103,11 @@ const GoogleMap = (props) => {
     }
   }
 
-  const onInfoWindowClick = () => {
-    if (showingInfoWindow) {
-    console.log("info window click")}
-    window.location.href = "http://localhost:3000/details/BliEYJT7BnkvdnogsF8J"; 
+  let shareUrl = '';
+  if (selectedCenter) {
+    shareUrl = 'details/' + selectedCenter.id;
   }
 
-  if (selectedCenter) { 
-    button.addEventListener('click', onInfoWindowClick);
-  }
-      
   const displayMarkers = () => {
     return props.mapItems.map((item, index) => {
       return <Marker 
@@ -120,7 +115,8 @@ const GoogleMap = (props) => {
                 id={item.id}
                 icon={{
                   url: marker,
-                  scaledSize:  new props.google.maps.Size(35,35)
+                  scaledSize:  new props.google.maps.Size(35,35
+                    )
                 }}
                 title={item.name.en || ''}
                 name={item.name.en || ''}
@@ -144,7 +140,7 @@ const GoogleMap = (props) => {
             <div>
             <h4 id='infowindow'>{selectedCenter.title || ''}</h4>
               <div class="infoBtn">
-                <a href="http://localhost:3000/details/BliEYJT7BnkvdnogsF8J">info</a>
+                <a href={shareUrl}>info</a>
               </div>
             </div>
         </InfoWindow>
