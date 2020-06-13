@@ -120,7 +120,7 @@ const GoogleMap = (props) => {
                 id={item.id}
                 icon={{
                   url: marker,
-                  scaledSize:  new props.google.maps.Size(30,30)
+                  scaledSize:  new props.google.maps.Size(35,35)
                 }}
                 title={item.name.en || ''}
                 name={item.name.en || ''}

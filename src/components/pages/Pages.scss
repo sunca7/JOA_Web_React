@@ -4,16 +4,15 @@
   width: 100vw;
   height: calc(100vh - 80px);
   background: white;
-  position: relative;
+  // position: relative;
   margin: 0px;
   padding: 0px;
   // z-index: 5;
+  // overflow: hidden; 
 
   .title {
-    // justify-content: center;
-    // align-content: center;
-    // height: 60vh;
-    // line-height: 60vh;
+    // position: relative;
+    // top: 10%;
     text-align: center;
     font-weight: map-get($map: $font-weights, $key: medium);
     padding : 0px;
@@ -51,6 +50,7 @@
     justify-content: center;
     align-content: center;
     text-align: center;
+    z-index: 5;
     
     &:hover{
       color: white;
@@ -70,13 +70,14 @@
 
 
 .categories {
+  z-index: 3;
   padding : 0px 2vw;
   height: calc(100vh - 100px);
   margin-left: auto;
   margin-Right : auto;
 
   @media (min-width: 700px) {
-    padding-top: 20px;
+    padding-top: 10px;
     width: 80vw;
   }
 }
@@ -104,10 +105,30 @@
 
 .about-container {
   background-color: white;
-  padding: 20px 50px;
+  // padding: 20px 0px;
   font-weight: map-get($map: $font-weights, $key: medium);
   color: 	black;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 80px);
+  width: 100vw;
+  overflow:hidden;
+  display: block;
+
+  .videoTag {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    position: absolute; 
+    overflow: hidden;
+    top: -2%;
+    
+    @media (min-width: 1280px) {
+      top: -1%
+    }
+
+    @media (max-width: 640px) {
+      top: -20%;
+    }
+  }
 
   #joa {
     text-align: center;
@@ -134,4 +155,8 @@
   font-size: calc(15px + 2vw);
   text-align: center;
   font-weight: map-get($map: $font-weights, $key: medium);
+
+  @media (max-width: 640px) {
+    padding: 0px 20px;
+  }
 }

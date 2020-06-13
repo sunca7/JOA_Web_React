@@ -20,7 +20,7 @@
 // Places
 
 .categories-container {
-    margin-top: calc(100px + 2vh);
+    margin-top: calc(50px + 2vh);
     display: grid;
     grid-template-columns: 1fr 1fr;
     width : 70vw;
@@ -271,6 +271,7 @@ a {
     
     #name {
         text-align: center;
+        font-weight: map-get($map: $font-weights, $key: bold);
     }
 
     i {

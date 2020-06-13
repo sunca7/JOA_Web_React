@@ -26,7 +26,7 @@ const Detail = ({ match }) => {
     let photos = [];
 
     const proprietes = {
-        duration: 5000,
+        duration: 3000,
         transitionDuration: 500,
         infinite: true,
         indicators: true,
