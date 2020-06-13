@@ -14,7 +14,7 @@ const CategoryItem = (props) => {
   return (
       <Link to={`/${urlParam}`} className="categoryItem">
         <img className="category-img" src={ picture } alt="category-img" />
-        <h1 className="name-center" > {name.en} </h1>
+        <h1 className="name-center" > {name.en || name.fr || name.kr} </h1>
       </Link>
   );  
 }

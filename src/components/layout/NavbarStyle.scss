@@ -122,6 +122,12 @@
         overflow: auto;
         transition: right 0.3s;
 
+        li {
+          &:hover {
+            background-color: #e9d8c7;
+          }
+        }
+
         a {
           text-align: center;
           padding: 10px;

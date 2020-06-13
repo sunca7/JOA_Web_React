@@ -8,7 +8,7 @@ const EventItem = props => {
     return (
         <Link to={`/event/${id}`} className='eventItem placeItem'>
             <img className='event-img' src={ picture } alt='event-img'/>
-            <p className='name-center' > {name.en || ''} </p>
+            <p className='name-center event-name' > {name.en || ''} </p>
         </Link>
     )
 }

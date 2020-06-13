@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect, Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { Link } from 'react-router-dom';
+import marker from '../assets/marker1.png'
 
 // class GoogleMap extends Component {
 //   componentDidMount() {
@@ -117,6 +118,10 @@ const GoogleMap = (props) => {
       return <Marker 
                 key={index} 
                 id={item.id}
+                icon={{
+                  url: marker,
+                  scaledSize:  new props.google.maps.Size(30,30)
+                }}
                 title={item.name.en || ''}
                 name={item.name.en || ''}
                 position={{
@@ -137,10 +142,10 @@ const GoogleMap = (props) => {
             visible={showingInfoWindow}
         >             
             <div>
+            <h4 id='infowindow'>{selectedCenter.title || ''}</h4>
               <div class="infoBtn">
                 <a href="http://localhost:3000/details/BliEYJT7BnkvdnogsF8J">info</a>
               </div>
-              <h4>{selectedCenter.title || ''}</h4>
             </div>
         </InfoWindow>
         ); 

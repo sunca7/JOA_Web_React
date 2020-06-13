@@ -76,6 +76,7 @@
   margin-Right : auto;
 
   @media (min-width: 700px) {
+    padding-top: 20px;
     width: 80vw;
   }
 }
@@ -116,6 +117,11 @@
     @media (min-width: 1280px) {
       font-size: 26em;
     }
+
+    @media (max-width: 640px) {
+      padding-top: calc(20px + 3vh);
+      padding-bottom: 20px;
+    }
   } 
 
   h1 {
@@ -125,7 +131,7 @@
 }
 
 #meaning {
-  font-size: calc(10px + 2vw);
+  font-size: calc(15px + 2vw);
   text-align: center;
   font-weight: map-get($map: $font-weights, $key: medium);
 }
