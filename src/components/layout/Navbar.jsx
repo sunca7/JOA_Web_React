@@ -47,7 +47,7 @@ class Navbar extends Component {
             </li>
             {/* <a> refreshes the Home page after coming back */}
             <li> 
-              <Link to="/" onClick={this.Hide}> Home</Link>  
+              <Link to="/home" onClick={this.Hide}> Home</Link>  
             </li>
             <li>
               <Link to="/about" onClick={this.Hide}> About</Link>

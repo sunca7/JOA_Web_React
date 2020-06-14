@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.scss";
 import JoaState from './context/joa/JoaState';
+import Landing from "./components/pages/Landing";
 import Home from "./components/pages/Home";
 import About from './components/pages/About'
 import Contact from './components/pages/Contact';
@@ -23,7 +24,8 @@ const App = () => {
           </div>
           <div className="container">
             <Switch>
-              <Route exact path='/' component={Home}/>
+              <Route exact path='/' component={Landing}/>
+              <Route exact path='/home' component={Home}/>
               <Route exact path='/about' component={About}/>
               <Route exact path='/contact' component={Contact}/>
               <Route exact path='/Events' component={EventCategory} />
