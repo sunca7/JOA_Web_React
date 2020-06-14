@@ -120,13 +120,25 @@
     position: absolute; 
     overflow: hidden;
     top: -2%;
-    
-    @media (min-width: 1280px) {
-      top: -1%
+
+    @media (max-width: 360px) {
+      top: -30vw;
     }
 
-    @media (max-width: 640px) {
-      top: -20%;
+    @media (min-width: 361px) and (max-width: 640px){
+      top: calc(-5em - 8vh);
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px){
+      top: -35vw;
+    }
+
+    @media (min-width: 1025px) and (max-width: 1280px){
+      top: -15vw;
+    }
+
+    @media (min-width: 1281px) {
+      top: -1%;
     }
   }
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import video from '../../assets/video.mp4';
+import Spinner from '../layout/Spinner';
 
 const About = () => {
     return (
         <div className='about-container'>
             {/* <h1>About JOA</h1> */}
-            <video className='videoTag' autoPlay loop muted>
+            <video className='videoTag' poster={Spinner} autoPlay loop muted>
                 <source src={video} type='video/mp4' />
             </video>
             <p id='joa'>좋아</p>
