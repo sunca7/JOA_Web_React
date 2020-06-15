@@ -152,9 +152,9 @@ const GoogleMap = (props) => {
     maxHidth: '992px',
     width : '90vw',
     height: '60vh',
-    minHeight: '384px'
-    // marginLeft : 'auto',
-    // marginRight : 'auto'
+    minHeight: '384px',
+    marginLeft : 'auto',
+    marginRight : 'auto'
   }
 
     return (

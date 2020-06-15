@@ -4,6 +4,13 @@ import { Slide } from 'react-slideshow-image';
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 import DetailMap from './DetailMap'
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -12,13 +19,24 @@ import {
     WhatsappShareButton,
   } from "react-share";
 
-  import {
-    EmailIcon,
-    FacebookIcon,
-    RedditIcon,
-    TwitterIcon,
-    WhatsappIcon,
-  } from "react-share";
+const useStyles = makeStyles({
+    root: {
+        width: '90vw',
+        marginTop: '2vh',
+        maxWidth: 800,
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    },
+    media: {
+        height: '40vh',
+    },
+    map : {
+        height: '30vh'
+    }
+  });
+
+  let theme = createMuiTheme();
+    theme = responsiveFontSizes(theme);
 
 const Detail = ({ match }) => {
     const joaContext = useContext(JoaContext);
@@ -31,7 +49,7 @@ const Detail = ({ match }) => {
         indicators: true,
         arrow: true
     }
-
+    const classes = useStyles();
     const shareUrl = 'joa-korea.com/details/' + selectedPlace.id; 
 
     useEffect(() => {
@@ -41,35 +59,45 @@ const Detail = ({ match }) => {
    
     if (loading)  return <Spinner />;
     return (
-        <div className='detail-container' >
-            {selectedPlace.newPhotos && 
-                <div className="slide-container">
-                    <Slide {...proprietes}>
-                        {selectedPlace.newPhotos.map(photo => (
-                            <div className="each-slide">
-                                <div>
-                                    <img src={photo} alt="img"/>
-                                </div>
-                            </div>
-                            ))}
-                    </Slide>
-                </div>}
-            {!selectedPlace.newPhotos && <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />}
-            <div className="details-info" >
-                {/* {selectedPlace.schedule && <p id='schedule'> </p> } */}
-                {selectedPlace.name && <p id='name'>{selectedPlace.name.en || selectedPlace.name.fr || selectedPlace.name.kr}</p>}
-                {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
-                {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
-                {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <span>{selectedPlace.website}</span></p></a>}
-                <p> <i className="fas fa-share-alt share"/> 
-                <EmailShareButton url={shareUrl}><EmailIcon round={true} /></EmailShareButton>
-                <FacebookShareButton url={shareUrl} ><FacebookIcon id='icon' round={true} /></FacebookShareButton>
-                <RedditShareButton url={shareUrl} ><RedditIcon id='icon' round={true} /></RedditShareButton>
-                <TwitterShareButton url={shareUrl}><TwitterIcon id='icon' round={true} /></TwitterShareButton>
-                <WhatsappShareButton url={shareUrl}> <WhatsappIcon id='icon' round={true} /></WhatsappShareButton></p>
-            </div>
-                <DetailMap />
-        </div>
+    <div className='detail-container'>
+        <Card className={classes.root}>
+            <CardActionArea>
+                <CardContent className={classes.media}>
+                    {selectedPlace.newPhotos && 
+                                <div className="slide-container">
+                                    <Slide {...proprietes}>
+                                        {selectedPlace.newPhotos.map(photo => (
+                                            <div className="each-slide">
+                                                <div><img src={photo} alt="img"/></div>
+                                            </div>
+                                            ))}
+                                    </Slide>
+                                </div>}
+                    {!selectedPlace.newPhotos && <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />}           
+                </CardContent>
+                <CardContent>
+                    <ThemeProvider theme={theme}>
+                            {selectedPlace.name && <Typography gutterBottom variant="h5" component="h2" align ="center">
+                                {selectedPlace.name.en || selectedPlace.name.fr || selectedPlace.name.kr}</Typography> }
+                        <Typography variant="h6" component="p" >
+                                {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
+                                {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
+                                {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <span>{selectedPlace.website}</span></p></a>}
+                                <p> <i className="fas fa-share-alt share"/> 
+                                <EmailShareButton url={shareUrl}><i className="fa fa-envelope-o" /></EmailShareButton>
+                                <FacebookShareButton url={shareUrl}> <i className="fa fa-facebook-official" color="blue" /></FacebookShareButton>
+                                <RedditShareButton url={shareUrl} ><i className="fa fa-reddit" /></RedditShareButton>
+                                <TwitterShareButton url={shareUrl}><i className="fa fa-twitter-square" /></TwitterShareButton>
+                                <WhatsappShareButton url={shareUrl}> <i className="fa fa-whatsapp" /></WhatsappShareButton></p>
+                        </Typography>
+                    </ThemeProvider>
+                </CardContent>
+                <CardContent className={classes.map}>
+                    <DetailMap />
+                </CardContent>
+            </CardActionArea>
+        </Card>
+    </div>
     );
 }
 

@@ -7,16 +7,16 @@ const DetailMap = (props) => {
     const { selectedPlace } = joaContext;
 
     const mapStyle = {
-      width : '50vw',
-      height: '40vh',
+      width: `calc(100% - 32px)`,
+      height: '30vh',
     }
 
     return (
-      <div className='detail-map-container'>
+      <div >
         <Map id="detail-map"
           google={props.google}
           zoom={15}
-          // style={mapStyle}
+          style={mapStyle}
           initialCenter={{ lat: selectedPlace.latitude, lng: selectedPlace.longitude}}>
           <Marker 
             title={selectedPlace.name.en || ''}

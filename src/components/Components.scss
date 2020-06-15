@@ -40,6 +40,7 @@
     @media (max-width: 640px) {
         width : 95vw;
         height: 80vh;
+        margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -261,87 +262,27 @@ a {
     }
 }
 
-// .event-name {
-//     @media (max-width: 500px) {
-//         font-size: 30px;
-//     }
-// }
-
 .detail-container {
-    display: block;
-    margin-top: 50px;
-    width : 50vw;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding-top: calc(10px + 0.5vh);
+    padding-bottom: calc(10px + 0.5vh);
     
-    #name {
-        text-align: center;
-        font-weight: map-get($map: $font-weights, $key: bold);
-    }
-
-    i {
-        margin-right: 10px;
-        align-self: center;
-    }
-
-    .share {
-        bottom: 20px;
-    }
-
-    button {
-        margin: 0px 5px;
-        width: calc(30px + 0.8vw);
-    }
-
-    svg {
-        top: 20px;
-        width: calc(30px + 0.8vw);
-        height: auto;
-    }
-
-    @media (max-width: 1024px) {
-        width : 80vw;
-        height: 100vh;
-        display: block;
-        overflow: auto;
-        word-wrap: break-word;
-    }
-
-    .slide-container {
-        width: 100%;
-    }
-
-    .details-info {
-        margin-top: 3vh;
-        margin-bottom: 3vh;
-    }
-
-    img {
-        width : 100%;
-        height : 40vh;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+    h2 {
+        padding-top: 15px;
     }
 
     p {
-        font-weight: map-get($map: $font-weights, $key: medium);
-        color: black;
-        margin: 2vw;
-        font-size: calc(15px + 0.8vw);
-        justify-content: center;
-
-        @media (max-width: 640px) {
-            font-size: 15px;
-        }
-
-        i {
-            display : inline;
-        }
+        padding-top: 5px;
+        font-weight: map-get($map: $font-weights, $key: light);
     }
+}
+
+.fa {
+    margin-left : 10px;
+    margin-right: 10px;
+}
+
+.fas {
+    margin-right: 10px;
 }
 
 .each-slide img {
@@ -349,14 +290,4 @@ a {
         height : 40vh;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-}
-
-.detail-map-container div{
-    width : 50vw;
-    height: 40vh;
-
-    @media (max-width: 1024px) {
-        width : 80vw;
-        height: 40vh;
-    }
 }
