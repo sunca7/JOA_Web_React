@@ -4,6 +4,7 @@
 //Events
 
 .event-category-container {
+    padding-top: 30px;
     height : 100vh;
     background : #fbab9d;
 }
@@ -93,7 +94,7 @@ a {
         text-decoration: none;
         color: black;
         text-align: center;
-        padding-top: calc(5px + 1vh);
+        padding-top: calc(10px + 1vh);
         padding-bottom: calc(5px + 1vh);
         font-size: calc(20px + 1vw); 
         font-weight: map-get($map: $font-weights, $key: light);
@@ -265,9 +266,13 @@ a {
 .detail-container {
     padding-top: calc(10px + 0.5vh);
     padding-bottom: calc(10px + 0.5vh);
-    
+
     h2 {
         padding-top: 15px;
+    }
+
+    h3 {
+        padding: 15px 0px;
     }
 
     p {
@@ -277,6 +282,7 @@ a {
 }
 
 .fa {
+    font-size: calc(20px + 0.8vw);
     margin-left : 10px;
     margin-right: 10px;
 }
