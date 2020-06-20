@@ -9,7 +9,7 @@ const Category = ({ match }) => {
     const { getCategory, selectedCategory, loading } = joaContext;
 
     useEffect(() => {
-        getCategory(match.params.id);
+        getCategory(match.params.name);
         // eslint-diable-next-line
     }, [])
 

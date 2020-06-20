@@ -9,8 +9,8 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
-
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -47,13 +47,18 @@ const Detail = ({ match }) => {
         transitionDuration: 500,
         infinite: true,
         indicators: true,
-        arrow: true
+        arrow: "true"
     }
     const classes = useStyles();
-    const shareUrl = 'joa-korea.com/details/' + selectedPlace.id; 
+    
+    let shareUrl = null;
+    if (selectedPlace.name) {
+        let encoded = null;
+        encoded = encodeURI(selectedPlace.name.en);
+        shareUrl = 'joa-korea.com/details/' + encoded; }
 
     useEffect(() => {
-        getPlace(match.params.id);
+        getPlace(match.params.name);
         // eslint-diable-next-line
     }, [])
    
@@ -62,19 +67,24 @@ const Detail = ({ match }) => {
     <div className='detail-container'>
         <Card className={classes.root}>
             <CardActionArea>
-                <CardContent className={classes.media}>
+                {selectedPlace.newPhotos && <CardContent className={classes.media}>
                     {selectedPlace.newPhotos && 
                                 <div className="slide-container">
                                     <Slide {...proprietes}>
                                         {selectedPlace.newPhotos.map(photo => (
-                                            <div className="each-slide">
+                                            <div className="each-slide"
+                                                key = {selectedPlace.id}>
                                                 <div><img src={photo} alt="img"/></div>
                                             </div>
                                             ))}
                                     </Slide>
                                 </div>}
-                    {!selectedPlace.newPhotos && <img className='detail-img'src={selectedPlace.picture} alt="place-main-img"  />}           
-                </CardContent>
+                </CardContent>}
+                {!selectedPlace.newPhotos && <CardMedia
+                    className={classes.media}
+                    image={selectedPlace.picture}
+                    title="place-main-img"
+                />} 
                 <CardContent>
                     <ThemeProvider theme={theme}>
                             {selectedPlace.name && <Typography gutterBottom variant="h5" component="h2" align ="center">

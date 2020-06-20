@@ -54,9 +54,18 @@ const JoaState  = props  => {
         });
     };
 
-    const getCategory = async id => {
+    const getCategory = async name => {
         setLoading();
-
+        
+        let categoryId = null;
+        if (name === 'Lifestyle') {
+            categoryId = 'MWk6mgDk6mwo1OXfp5tK';
+        } else if (name === 'Restaurants') {
+            categoryId = 'cblvLqLmtAJkHOZMWJWE';
+        } else if (name === 'Groceries') {
+            categoryId = 'e8neDA29Y09eQEyvlZ1N';
+        }
+        
         let placesDb = []; 
         await db.collection("places")
             .get()
@@ -66,7 +75,7 @@ const JoaState  = props  => {
                     });
                 });
         
-        let res  = placesDb.filter(i => i.category_id === id);
+        let res  = placesDb.filter(i => i.category_id === categoryId);
 
         dispatch({
             type: GET_CATEGORY,
@@ -92,7 +101,7 @@ const JoaState  = props  => {
 
     }
 
-    const getPlace = async id => {
+    const getPlace = async name => {
         setLoading();
 
         let placeInfo = [];
@@ -107,14 +116,15 @@ const JoaState  = props  => {
                     });
                 });
 
-        placeInfo = placesDb.filter(place => place.id === id);
+        placeInfo = placesDb.filter(place => place.name.en === name);
                 
         selected = placeInfo[0];
-
+    
         if (selected && (selected.secondary_pictures.length > 0 || selected.menu.length > 0))
             newPhotos.push(selected.picture);
 
         if (selected && selected.secondary_pictures.length > 0) {
+            console.log("selected " + JSON.stringify(selected));
             newPhotos = newPhotos.concat(selected.secondary_pictures);
         }
 

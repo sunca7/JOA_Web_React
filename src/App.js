@@ -30,8 +30,8 @@ const App = () => {
               <Route exact path='/contact' component={Contact}/>
               <Route exact path='/Events' component={EventCategory} />
               <Route exact path='/event/:id' component={EventDetail}/>
-              <Route exact path='/:id' component={Category} />
-              <Route exact path='/details/:id' component={Detail}/>
+              <Route exact path='/:name' component={Category} />
+              <Route exact path='/details/:name' component={Detail}/>
             </Switch>
             </div>
         </div>

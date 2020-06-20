@@ -9,7 +9,7 @@ const CategoryItem = (props) => {
   if (name.en === 'Events') 
     urlParam = 'Events'; 
   else
-    urlParam = id;
+    urlParam = name.en;
 
   return (
       <Link to={`/${urlParam}`} className="categoryItem">

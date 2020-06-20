@@ -50,7 +50,7 @@ const EventDetail = ({ match }) => {
 
     if (loading) return <Spinner />;
     return (
-        <div className='detail-container'>
+        <div className='detail-container event-detail'>
             <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
