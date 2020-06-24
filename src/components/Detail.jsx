@@ -52,13 +52,13 @@ const Detail = ({ match }) => {
     const classes = useStyles();
     
     let shareUrl = null;
-    if (selectedPlace.name) {
-        let encoded = null;
-        encoded = encodeURI(selectedPlace.name.en);
-        shareUrl = 'joa-korea.com/details/' + encoded; }
+    if (selectedPlace) {
+        // let encoded = null;
+        // encoded = encodeURI(selectedPlace.name.en);
+        shareUrl = 'joa-korea.com/details/' + selectedPlace.id; }
 
     useEffect(() => {
-        getPlace(match.params.name);
+        getPlace(match.params.id);
         // eslint-diable-next-line
     }, [])
    

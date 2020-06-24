@@ -283,6 +283,10 @@ a {
         padding-top: 5px;
         font-weight: map-get($map: $font-weights, $key: light);
     }
+
+    @media (min-width: 500px) {
+        height: calc(100vh - 80px);
+    }
 }
 
 .fa {

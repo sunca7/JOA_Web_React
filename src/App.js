@@ -31,7 +31,7 @@ const App = () => {
               <Route exact path='/Events' component={EventCategory} />
               <Route exact path='/event/:id' component={EventDetail}/>
               <Route exact path='/:name' component={Category} />
-              <Route exact path='/details/:name' component={Detail}/>
+              <Route exact path='/details/:id' component={Detail}/>
             </Switch>
             </div>
         </div>

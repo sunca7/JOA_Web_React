@@ -103,7 +103,8 @@ const GoogleMap = (props) => {
     }
   }
 
-  let shareUrl = '';
+  let shareUrl = null;
+
   if (selectedCenter) {
     shareUrl = 'details/' + selectedCenter.id;
   }

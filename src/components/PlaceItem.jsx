@@ -6,7 +6,7 @@ const PlaceItem = props => {
     const { picture, name, id } = props.place;
 
     return (
-        <Link to={`/details/${name.en}`} className='placeItem'>
+        <Link to={`/details/${id}`} className='placeItem'>
             <img className='place-item-img' src={ picture } alt='place-img'/>
             <p className='name-center'> {name.en} </p>
         </Link>

@@ -101,7 +101,7 @@ const JoaState  = props  => {
 
     }
 
-    const getPlace = async name => {
+    const getPlace = async id => {
         setLoading();
 
         let placeInfo = [];
@@ -116,7 +116,7 @@ const JoaState  = props  => {
                     });
                 });
 
-        placeInfo = placesDb.filter(place => place.name.en === name);
+        placeInfo = placesDb.filter(place => place.id === id);
                 
         selected = placeInfo[0];
     
