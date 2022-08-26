@@ -3,7 +3,6 @@ import EventItem from './EventItem';
 import JoaContext from '../context/joa/joaContext';
 import Spinner from './layout/Spinner';
 import Typography from '@material-ui/core/Typography';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 const EventCategory = () => {
     const joaContext = useContext(JoaContext);
@@ -11,11 +10,8 @@ const EventCategory = () => {
 
     useEffect(() => {
         getEvents();
-        // eslint-diable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    let theme = createMuiTheme();
-    theme = responsiveFontSizes(theme);
 
     if (loading) return <Spinner />;
     return (

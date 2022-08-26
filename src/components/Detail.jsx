@@ -10,7 +10,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     }
   });
 
-  let theme = createMuiTheme();
+  let theme = createTheme();
     theme = responsiveFontSizes(theme);
 
 const Detail = ({ match }) => {
@@ -59,7 +59,7 @@ const Detail = ({ match }) => {
 
     useEffect(() => {
         getPlace(match.params.id);
-        // eslint-diable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
    
     if (loading)  return <Spinner />;

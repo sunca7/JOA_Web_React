@@ -11,7 +11,6 @@ import Detail from './components/Detail';
 import EventDetail from './components/EventDetails';
 import EventCategory from './components/EventCategory';
 import Navbar from './components/layout/Navbar';
-import Spinner from './components/layout/Spinner';
 
 const App = () => {
   

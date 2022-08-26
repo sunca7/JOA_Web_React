@@ -10,7 +10,7 @@ const Category = ({ match }) => {
 
     useEffect(() => {
         getCategory(match.params.name);
-        // eslint-diable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading)  return <Spinner />;

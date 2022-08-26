@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 
 const CategoryItem = (props) => {
-  const { picture, name, id } = props.category;
+  const { picture, name } = props.category;
 
   let urlParam = null;
   if (name.en === 'Events') 

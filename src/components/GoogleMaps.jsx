@@ -1,7 +1,5 @@
-import React, { useState, Fragment, useEffect, Component } from 'react';
-import ReactDOMServer from 'react-dom/server';
+import React, { useState } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import { Link } from 'react-router-dom';
 import marker from '../assets/marker1.png'
 
 // class GoogleMap extends Component {
@@ -78,9 +76,6 @@ const GoogleMap = (props) => {
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [activeMarker, setActiveMarker] = useState({});
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
-
-  var bounds = new props.google.maps.LatLngBounds();
-  const button = document.querySelector('button');
 
   const onMarkerClick = (props, marker) => {
     setActiveMarker(marker);

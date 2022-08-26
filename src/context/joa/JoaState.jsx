@@ -1,5 +1,6 @@
 import React , { useReducer } from 'react';
-import db from '../../db/index';
+import { db } from '../../db/index';
+import { collection, query, where, getDocs } from "firebase/firestore";
 import JoaContext from './joaContext';
 import JoaReducer from  './joaReducer';
 import {
@@ -34,19 +35,18 @@ const JoaState  = props  => {
         setLoading();
 
         const cagetoriesDb = [];
-        await db.collection("categories")
-        .get()
-            .then(querySnapshot => {
-                querySnapshot.forEach((doc) => (
-                cagetoriesDb.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    order: doc.data().order,
-                    picture: doc.data().picture,
-                    type : doc.data().type
+        const q = query(collection(db, "categories"));
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => (
+            cagetoriesDb.push({
+                id: doc.id,
+                name: doc.data().name,
+                order: doc.data().order,
+                picture: doc.data().picture,
+                type : doc.data().type
                 })
-            ));
-        });
+        ));
 
         dispatch({
             type: GET_CATEGORIES,
@@ -66,15 +66,14 @@ const JoaState  = props  => {
             categoryId = 'e8neDA29Y09eQEyvlZ1N';
         }
         
-        let placesDb = []; 
-        await db.collection("places")
-            .get()
-                .then(querySnapshot => {
-                    querySnapshot.forEach(doc => {
-                        placesDb.push(doc.data());
-                    });
-                });
-        
+        let placesDb = [];
+        const placesQ = query(collection(db, "places"));
+        const placesQuerySnapshot = await getDocs(placesQ);
+
+        placesQuerySnapshot.forEach(doc => {
+            placesDb.push(doc.data());
+        });
+
         let res  = placesDb.filter(i => i.category_id === categoryId);
 
         dispatch({
@@ -86,13 +85,12 @@ const JoaState  = props  => {
     const getPlaces = async () => {
     
         let placesDb = []; 
-        await db.collection("places")
-            .get()
-                .then(querySnapshot => {
-                    querySnapshot.forEach(doc => {
-                        placesDb.push(doc.data());
-                    });
-                });
+        const placesQ = query(collection(db, "places"));
+        const placesQuerySnapshot = await getDocs(placesQ);
+
+        placesQuerySnapshot.forEach(doc => {
+            placesDb.push(doc.data());
+        });
 
         dispatch({
             type: GET_PLACES,
@@ -108,13 +106,13 @@ const JoaState  = props  => {
         let placesDb = [];
         let selected = [];
         let newPhotos = []; 
-        await db.collection("places")
-            .get()
-                .then(querySnapshot => {
-                    querySnapshot.forEach(doc => {
-                        placesDb.push(doc.data());
-                    });
-                });
+
+        const placesQ = query(collection(db, "places"));
+        const placesQuerySnapshot = await getDocs(placesQ);
+
+        placesQuerySnapshot.forEach(doc => {
+            placesDb.push(doc.data());
+        });
 
         placeInfo = placesDb.filter(place => place.id === id);
                 
@@ -145,14 +143,14 @@ const JoaState  = props  => {
     const getEvents = async () => {
         setLoading();
 
-        let eventsDb = []; 
-        await db.collection("events")
-        .get()
-            .then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                eventsDb.push(doc.data());
-                });
-            });
+        let eventsDb = [];
+        const eventsQ = query(collection(db, "events"));
+        const eventsQuerySnapshot = await getDocs(eventsQ);
+
+        eventsQuerySnapshot.forEach(doc => {
+            eventsDb.push(doc.data());
+            }
+        );
 
         dispatch({
             type: GET_EVENTS,
@@ -165,13 +163,13 @@ const JoaState  = props  => {
 
         let eventInfo = {};
         let eventsDb = []; 
-        await db.collection("events")
-        .get()
-            .then(querySnapshot => {
-                querySnapshot.forEach(doc => {
+
+        const eventsQ = query(collection(db, "events"));
+        const eventsQuerySnapshot = await getDocs(eventsQ);
+
+        eventsQuerySnapshot.forEach(doc => {
                 eventsDb.push(doc.data());
-                });
-            });
+        });
 
         eventInfo = eventsDb.filter(event => event.id === id);
 

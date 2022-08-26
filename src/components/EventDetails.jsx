@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Spinner from './layout/Spinner';
 import JoaContext from '../context/joa/joaContext';
 import './Components.scss';
@@ -8,7 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 import {
     EmailShareButton,
@@ -34,7 +34,7 @@ import {
     // }
   });
 
-  let theme = createMuiTheme();
+  let theme = createTheme();
     theme = responsiveFontSizes(theme);
 
 const EventDetail = ({ match }) => {
@@ -45,7 +45,7 @@ const EventDetail = ({ match }) => {
 
     useEffect(() => {
         getEventItem(match.params.id);
-        // eslint-diable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading) return <Spinner />;
