@@ -66,7 +66,7 @@ const Detail = ({ match }) => {
     return (
     <div className='detail-container'>
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea component="span">
                 {selectedPlace.newPhotos && <CardContent className={classes.media}>
                     {selectedPlace.newPhotos && 
                                 <div className="slide-container">
@@ -74,7 +74,10 @@ const Detail = ({ match }) => {
                                         {selectedPlace.newPhotos.map(photo => (
                                             <div className="each-slide"
                                                 key = {selectedPlace.id}>
-                                                <div><img src={photo} alt="img"/></div>
+                                                <div><img src={photo} alt="img" onError={({ currentTarget }) => {
+    currentTarget.onerror = null; // prevents looping
+    currentTarget.src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2560px-Flag_of_South_Korea.svg.png";
+  }}/></div>
                                             </div>
                                             ))}
                                     </Slide>
@@ -89,7 +92,7 @@ const Detail = ({ match }) => {
                     <ThemeProvider theme={theme}>
                             {selectedPlace.name && <Typography gutterBottom variant="h5" component="h2" align ="center">
                                 {selectedPlace.name.en || selectedPlace.name.fr || selectedPlace.name.kr}</Typography> }
-                        <Typography variant="h6" component="p" >
+                        <Typography variant="h6" component="span" >
                                 {selectedPlace.phone && <p> <i className="fas fa-phone-square-alt"/> {selectedPlace.phone}  </p>}
                                 {selectedPlace.address && <p> <i className="fas fa-map-marked-alt"/> {selectedPlace.address} </p>}
                                 {selectedPlace.website && <a target="_blank" rel="noopener noreferrer" href={selectedPlace.website}> <p> <i className="fas fa-home"/> <span>{selectedPlace.website}</span></p></a>}

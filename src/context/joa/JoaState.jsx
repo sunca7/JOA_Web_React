@@ -122,7 +122,6 @@ const JoaState  = props  => {
             newPhotos.push(selected.picture);
 
         if (selected && selected.secondary_pictures.length > 0) {
-            console.log("selected " + JSON.stringify(selected));
             newPhotos = newPhotos.concat(selected.secondary_pictures);
         }
 

@@ -52,15 +52,19 @@ const EventDetail = ({ match }) => {
     return (
         <div className='detail-container event-detail'>
             <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea component="span">
+            {event.picture ? (
                 <CardMedia
-                    className={classes.media}
-                    image={event.picture}
-                    title="place-main-img"
+                className={classes.media}
+                image={event.picture}
+                title="place-main-img"
                 />
+                ) : (
+                <Spinner />
+                )}
                 <CardContent>
                     <ThemeProvider theme={theme}>
-                    <Typography>
+                    <Typography component={'span'}>
                             {event.name && <Typography gutterBottom variant="h5" component="h2" align ="center">
                                 {event.name.en || event.name.fr || event.name.kr}</Typography> }
                             {event.description && <Typography variant="body1" component='p' align ="center"> {event.description.fr || event.description.en} </Typography> }

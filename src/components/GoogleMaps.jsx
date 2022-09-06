@@ -83,7 +83,6 @@ const GoogleMap = (props) => {
     setShowingInfoWindow(true);
     // bounds.extend(props.position);
     // props.google.maps.fitBound(bounds);
-    console.log("position ", props.position);
   }
 
   const onInfoWindowClose = () => {
@@ -126,7 +125,6 @@ const GoogleMap = (props) => {
 
   const displayInfo = () => {
       if (selectedCenter) { 
-        console.log("selectedCenter ", selectedCenter);
         return (
           <InfoWindow className='infoWindow'
             marker={activeMarker}
