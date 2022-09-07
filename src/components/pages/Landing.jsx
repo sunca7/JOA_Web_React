@@ -4,14 +4,6 @@ import { animateScroll as scroll } from 'react-scroll';
 import { Link } from "react-router-dom";
 
 const Landing = () => {
-//   const joaContext = useContext(JoaContext);
-//   const { getCategories } = joaContext;
-  
-//   useEffect(() => {
-//     getCategories();
-//   // eslint-diable-next-line
-// }, [])
- 
   return (
       <div className='hello-container'>
         <p className='title'> 안녕</p>
